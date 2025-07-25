@@ -46,9 +46,9 @@ dotnet add package Shark.Fido2.InMemory
             <p>The following is an example of the server-side configuration.</p>
             <pre class="code"><code class="language-json">{
   "Fido2Configuration": {
-    "RelyingPartyId": "example.com",
+    "RelyingPartyId": "example.com", // Use 'localhost' for local development
     "RelyingPartyIdName": "Example Corporation",
-    "Origins": [ "https://example.com" ],
+    "Origins": [ "https://example.com" ], // Use '[ "localhost" ]' for local development
     "Timeout": "60000",
     "AllowNoneAttestation": true,
     "AllowSelfAttestation": true,
@@ -66,9 +66,9 @@ dotnet add package Shark.Fido2.InMemory
             <p>A minimal server-side configuration example is shown below.</p>
             <pre class="code"><code class="language-json">{
   "Fido2Configuration": {
-    "RelyingPartyId": "example.com",
+    "RelyingPartyId": "example.com", // Use 'localhost' for local development
     "RelyingPartyIdName": "Example Corporation",
-    "Origins": [ "https://example.com" ]
+    "Origins": [ "https://example.com" ] // Use '[ "localhost" ]' for local development
   }
 }
 </code></pre>
@@ -130,10 +130,26 @@ dotnet add package Shark.Fido2.InMemory
             </p>
             <pre class="code"><code class="language-csharp">var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddControllers();
+
 // Other service registrations
 
 builder.Services.AddFido2InMemoryStore();
 builder.Services.AddFido2(builder.Configuration);
+
+var app = builder.Build();
+
+// Configure the HTTP request pipelines
+
+// HTTP request pipelines
+
+app.UseStaticFiles();
+
+// Other HTTP request pipelines
+
+app.MapControllers();
+
+await app.RunAsync();
 </code></pre>
             <p>
                 <code>AddFido2(builder.Configuration)</code> registers the core <b>Shark WebAuthn</b> services using your application's configuration. <code>AddFido2InMemoryStore()</code> registers an in-memory credential repository, suitable for development and testing. For production, consider using a persistent credential store instead of the in-memory implementation.
@@ -149,18 +165,25 @@ builder.Services.AddFido2(builder.Configuration);
             <p>
                 1. <b>Create the <code>AttestationController</code> and inject the <code>IAttestation</code> interface into its constructor</b>
             </p>
-            <pre class="code"><code class="language-csharp">private readonly IAttestation _attestation;
-
-public AttestationController(IAttestation attestation)
+            <pre class="code"><code class="language-csharp">[Route("[controller]")]
+[ApiController]
+public class AttestationController : ControllerBase
 {
-    _attestation = attestation;
+    private readonly IAttestation _attestation;
+
+    public AttestationController(IAttestation attestation)
+    {
+        _attestation = attestation;
+    }
+
+    // Endpoints for attestation operations
 }
 </code></pre>
             <p>
-                2. <b>Add endpoint to get create options</b>
+                2. <b>Add endpoint to get create credential options</b>
             </p>
             <pre class="code"><code class="language-csharp">[HttpPost("options")]
-public async Task<IActionResult> Options(ServerPublicKeyCredentialCreationOptionsRequest request, CancellationToken cancellationToken)
+public async Task&lt;IActionResult&gt; Options(ServerPublicKeyCredentialCreationOptionsRequest request, CancellationToken cancellationToken)
 {
     var createOptions = await _attestation.CreateOptions(request.Map(), cancellationToken);
     var response = createOptions.Map();
@@ -172,10 +195,10 @@ public async Task<IActionResult> Options(ServerPublicKeyCredentialCreationOption
                 3. <b>Add endpoint to create credential</b>
             <p>
                 <pre class="code"><code class="language-csharp">[HttpPost("result")]
-public async Task<IActionResult> Result(ServerPublicKeyCredentialAttestation request, CancellationToken cancellationToken)
+public async Task&lt;IActionResult&gt; Result(ServerPublicKeyCredentialAttestation request, CancellationToken cancellationToken)
 {
     var createOptionsString = HttpContext.Session.GetString("CreateOptions");
-    var createOptions = JsonSerializer.Deserialize<PublicKeyCredentialCreationOptions>(createOptionsString!);
+    var createOptions = JsonSerializer.Deserialize&lt;PublicKeyCredentialCreationOptions&gt;(createOptionsString!);
     await _attestation.Complete(request.Map(), createOptions!, cancellationToken);
     return Ok(ServerResponse.Create());
 }
@@ -185,18 +208,25 @@ public async Task<IActionResult> Result(ServerPublicKeyCredentialAttestation req
             <p>
                 1. <b>Create the <code>AssertionController</code> and inject the <code>IAssertion</code> interface into its constructor</b>
             </p>
-            <pre class="code"><code class="language-csharp">private readonly IAssertion _assertion;
-
-public AssertionController(IAssertion assertion)
+            <pre class="code"><code class="language-csharp">[Route("[controller]")]
+[ApiController]
+public class AssertionController : ControllerBase
 {
-    _assertion = assertion;
+    private readonly IAssertion _assertion;
+
+    public AssertionController(IAssertion assertion)
+    {
+        _assertion = assertion;
+    }
+
+    // Endpoints for assertion operations
 }
 </code></pre>
             <p>
-                2. <b>Add endpoint to get request options</b>
+                2. <b>Add endpoint to get request credential options</b>
             </p>
             <pre class="code"><code class="language-csharp">[HttpPost("options")]
-public async Task<IActionResult> Options(ServerPublicKeyCredentialGetOptionsRequest request, CancellationToken cancellationToken)
+public async Task&lt;IActionResult&gt; Options(ServerPublicKeyCredentialGetOptionsRequest request, CancellationToken cancellationToken)
 {
     var requestOptions = await _assertion.RequestOptions(request.Map(), cancellationToken);
     var response = requestOptions.Map();
@@ -208,10 +238,10 @@ public async Task<IActionResult> Options(ServerPublicKeyCredentialGetOptionsRequ
                 3. <b>Add endpoint to validate credential</b>
             </p>
             <pre class="code"><code class="language-csharp">[HttpPost("result")]
-public async Task<IActionResult> Result(ServerPublicKeyCredentialAssertion request, CancellationToken cancellationToken)
+public async Task&lt;IActionResult&gt; Result(ServerPublicKeyCredentialAssertion request, CancellationToken cancellationToken)
 {
     var requestOptionsString = HttpContext.Session.GetString("RequestOptions");
-    var requestOptions = JsonSerializer.Deserialize<PublicKeyCredentialRequestOptions>(requestOptionsString!);
+    var requestOptions = JsonSerializer.Deserialize&lt;PublicKeyCredentialRequestOptions&gt;(requestOptionsString!);
     await _assertion.Complete(request.Map(), requestOptions!, cancellationToken);
     return Ok(ServerResponse.Create());
 }
@@ -229,7 +259,7 @@ var app = builder.Build();
 
 app.UseSession();
 
-// Other middleware
+// Other HTTP request pipelines
 </code></pre>
             <p>
                 While the default in-memory session state is sufficient for development and testing, it is recommended to use a distributed cache (such as Redis) in production environments.
@@ -238,17 +268,17 @@ app.UseSession();
         <div class="main-description">
             <h3 id="client-side-integration">Client-side Integration</h3>
             <p>
-                To finalize the implementation, you must incorporate JavaScript code that interacts with the browser's Web Authentication API. This API manages the client-side authentication process.
+                To finalize the implementation, you must incorporate JavaScript code that interacts with the browser's Web Authentication API. This API manages the client-side authentication process. Please note that JavaScript files must be placed in the <code>wwwroot</code> folder so the server can serve them as static assets.
             </p>
             <p>
-                1. <b>Add <code>navigator.credentials.create()</code> call</b>
+                1. <b>Add <code>attestation.js</code> file that has <code>navigator.credentials.create()</code> call</b>
             </p>
             <p>
                 The following is a minimal sample of JavaScript code for creating discoverable credentials using the Web Authentication API in the browser. This code demonstrates the basic flow for communicating with the server-side REST API endpoints described above. <b>Important:</b> This example does not include production-level safeguards for simplicity. For real-world applications, you should add proper error handling and input validation.
             </p>
             <details>
                 <summary>Click to expand</summary>
-                <pre class="code"><code class="language-js">async function requestCreateDiscoverableCredentialOptions(username, displayName) {
+                <pre class="code"><code class="language-js">async function requestCreateCredentialOptions(username, displayName) {
     const optionsRequest = {
         username: username,
         displayName: displayName,
@@ -303,6 +333,8 @@ async function createCredential(options) {
     };
 
     await fetchAttestationResult(credentials);
+
+    window.alert('User was registered');
 }
 
 async function fetchAttestationOptions(optionsRequest) {
@@ -327,17 +359,19 @@ async function fetchAttestationResult(credentials) {
         body: JSON.stringify(credentials)
     });
 }
+
+window.requestCreateCredentialOptions = requestCreateCredentialOptions;
 </code></pre>
             </details>
             <p>
-                2. <b>Add <code>navigator.credentials.get()</code> call</b>
+                2. <b>Add <code>assertion.js</code> file that has <code>navigator.credentials.get()</code> call</b>
             </p>
             <p>
                 The following is a minimal sample of JavaScript code for performing authentication with discoverable credentials using the Web Authentication API in the browser. <b>Important:</b> This example does not include production-level safeguards for simplicity. For real-world applications, you should add proper error handling and input validation.
             </p>
             <details>
                 <summary>Click to expand</summary>
-                <pre class="code"><code class="language-js">async function requestVerifyDiscoverableCredentialOptions() {
+                <pre class="code"><code class="language-js">async function requestVerifyCredentialOptions() {
     const optionsRequest = {};
     const options = await fetchAssertionOptions(optionsRequest);
     await requestCredential(options);
@@ -367,6 +401,8 @@ async function requestCredential(options) {
     };
 
     await fetchAssertionResult(credentials);
+
+    window.alert('User was authenticated');
 }
 
 async function fetchAssertionOptions(optionsRequest) {
@@ -390,11 +426,30 @@ async function fetchAssertionResult(credentials) {
         },
         body: JSON.stringify(credentials)
     });
-}</code></pre>
+}
+
+window.requestVerifyCredentialOptions = requestVerifyCredentialOptions;
+</code></pre>
             </details>
             <p>
                 This JavaScript code bridges the browser's Web Authentication API with the server-side REST API endpoints provided by the ASP.NET Core controllers described above. More information about the Web Authentication API is available on the MDN Web Docs site at <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API" target="_blank" class="resource-link">developer.mozilla.org</a> page.
             </p>
+            <p>
+                3. <b>Add utilities functions</b>
+            </p>
+            <p>
+                Add <a href="https://github.com/linuxchata/fido2/blob/main/src/Shark.Fido2.Sample/wwwroot/js/utilities.js" target="_blank" class="resource-link">utility functions</a> to convert between Base64URL strings and Uint8Array byte arrays, ensuring proper encoding and decoding for binary data used in web authentication operations.
+            </p>
+            <p>
+                4. <b>Reference JavaScript files</b>
+            </p>
+            <p>
+                Reference JavaScript files in <code>_Layout.cshtml</code>.
+            </p>
+            <pre class="code"><code class="language-js">&lt;script src="~/js/attestation.js" asp-append-version="true"&gt;&lt;/script&gt;
+&lt;script src="~/js/assertion.js" asp-append-version="true"&gt;&lt;/script&gt;
+&lt;script src="~/js/utilities.js" asp-append-version="true"&gt;&lt;/script&gt;
+</code></pre>
             <h4 id="browsers-support">Browsers Support</h4>
             <p>Up-to-date details regarding the Web Authentication API support across modern browsers can be found on <a href="https://caniuse.com/webauthn" target="_blank" class="resource-link">Can I use</a> page.</p>
         </div>
