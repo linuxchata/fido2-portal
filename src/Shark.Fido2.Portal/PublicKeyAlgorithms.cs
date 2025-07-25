@@ -15,7 +15,7 @@ public static class PublicKeyAlgorithms
         { -257, "RS256 (RSASSA-PKCS1-v1_5 using SHA-256)" },
         { -258, "RS384 (RSASSA-PKCS1-v1_5 using SHA-384)" },
         { -259, "RS512 (RSASSA-PKCS1-v1_5 using SHA-512)" },
-        { -65535, "RS1 (RSASSA-PKCS1-v1_5 using SHA-1)" }
+        { -65535, "RS1 (RSASSA-PKCS1-v1_5 using SHA-1)" },
     };
 
     public static string Get(int key)
