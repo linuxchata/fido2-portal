@@ -6,7 +6,12 @@ async function requestCreateCredentialOptions(username, displayName) {
     const optionsRequest = {
         username: username,
         displayName: displayName,
-        attestation: 'direct'
+        attestation: 'direct',
+        authenticatorSelection: {
+            residentKey: 'preferred',
+            userVerification: 'preferred',
+            requireResidentKey: false
+        }
     };
 
     const options = await fetchAttestationOptions(optionsRequest);
@@ -30,6 +35,7 @@ async function createCredential(options) {
                 type: param.type,
                 alg: param.alg,
             })),
+            authenticatorSelection: options.authenticatorSelection,
             challenge: toUint8Array(options.challenge),
             excludeCredentials: options.excludeCredentials.map(credential => ({
                 id: toUint8Array(credential.id),

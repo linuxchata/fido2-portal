@@ -417,7 +417,7 @@ pre.code {
             line-height: var(--bs-body-line-height);
         }
 
-    .inner-container {
+    .inner-container-wrapper {
         flex-direction: column;
         gap: 10px;
     }
