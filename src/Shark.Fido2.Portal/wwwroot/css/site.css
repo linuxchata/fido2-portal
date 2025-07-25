@@ -90,9 +90,13 @@ input:disabled {
     margin: 10px auto;
 }
 
-.inner-container {
+.inner-container-wrapper {
     display: flex;
     gap: 40px;
+}
+
+.inner-container {
+    flex: 1;
 }
 
 .main-section {
