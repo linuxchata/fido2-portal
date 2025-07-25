@@ -69,11 +69,6 @@ input:disabled {
     opacity: .45 !important;
 }
 
-ol {
-    margin-left: 1rem;
-    padding: 0;
-}
-
 .navbar {
     background-color: var(--color-background);
 }

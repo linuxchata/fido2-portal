@@ -146,9 +146,9 @@ builder.Services.AddFido2(builder.Configuration);
             </p>
             <h4 id="attestation-registration">Attestation (Registration)</h4>
             <p>The Attestation controller handles the registration ceremony.</p>
-            <ol>
-                <li><b>Create the <code>AttestationController</code> and inject the <code>IAttestation</code> interface into its constructor</b></li>
-            </ol>
+            <p>
+                1. <b>Create the <code>AttestationController</code> and inject the <code>IAttestation</code> interface into its constructor</b>
+            </p>
             <pre class="code"><code class="language-csharp">private readonly IAttestation _attestation;
 
 public AttestationController(IAttestation attestation)
@@ -156,9 +156,9 @@ public AttestationController(IAttestation attestation)
     _attestation = attestation;
 }
 </code></pre>
-            <ol start="2">
-                <li><b>Add endpoint to get create options</b></li>
-            </ol>
+            <p>
+                2. <b>Add endpoint to get create options</b>
+            </p>
             <pre class="code"><code class="language-csharp">[HttpPost("options")]
 public async Task<IActionResult> Options(ServerPublicKeyCredentialCreationOptionsRequest request, CancellationToken cancellationToken)
 {
@@ -168,10 +168,10 @@ public async Task<IActionResult> Options(ServerPublicKeyCredentialCreationOption
     return Ok(response);
 }
 </code></pre>
-            <ol start="3">
-                <li><b>Add endpoint to create credential</b></li>
-            </ol>
-            <pre class="code"><code class="language-csharp">[HttpPost("result")]
+            <p>
+                3. <b>Add endpoint to create credential</b>
+            <p>
+                <pre class="code"><code class="language-csharp">[HttpPost("result")]
 public async Task<IActionResult> Result(ServerPublicKeyCredentialAttestation request, CancellationToken cancellationToken)
 {
     var createOptionsString = HttpContext.Session.GetString("CreateOptions");
@@ -180,11 +180,11 @@ public async Task<IActionResult> Result(ServerPublicKeyCredentialAttestation req
     return Ok(ServerResponse.Create());
 }
 </code></pre>
-            <h4 id="assertion-authentication">Assertion (Authentication)</h4>
+                <h4 id="assertion-authentication">Assertion (Authentication)</h4>
             <p>The Assertion controller handles the authentication ceremony.</p>
-            <ol>
-                <li><b>Create the <code>AssertionController</code> and inject the <code>IAssertion</code> interface into its constructor</b></li>
-            </ol>
+            <p>
+                1. <b>Create the <code>AssertionController</code> and inject the <code>IAssertion</code> interface into its constructor</b>
+            </p>
             <pre class="code"><code class="language-csharp">private readonly IAssertion _assertion;
 
 public AssertionController(IAssertion assertion)
@@ -192,9 +192,9 @@ public AssertionController(IAssertion assertion)
     _assertion = assertion;
 }
 </code></pre>
-            <ol start="2">
-                <li><b>Add endpoint to get request options</b></li>
-            </ol>
+            <p>
+                2. <b>Add endpoint to get request options</b>
+            </p>
             <pre class="code"><code class="language-csharp">[HttpPost("options")]
 public async Task<IActionResult> Options(ServerPublicKeyCredentialGetOptionsRequest request, CancellationToken cancellationToken)
 {
@@ -204,9 +204,9 @@ public async Task<IActionResult> Options(ServerPublicKeyCredentialGetOptionsRequ
     return Ok(response);
 }
 </code></pre>
-            <ol start="3">
-                <li><b>Add endpoint to validate credential</b></li>
-            </ol>
+            <p>
+                3. <b>Add endpoint to validate credential</b>
+            </p>
             <pre class="code"><code class="language-csharp">[HttpPost("result")]
 public async Task<IActionResult> Result(ServerPublicKeyCredentialAssertion request, CancellationToken cancellationToken)
 {
@@ -240,9 +240,9 @@ app.UseSession();
             <p>
                 To finalize the implementation, you must incorporate JavaScript code that interacts with the browser's Web Authentication API. This API manages the client-side authentication process.
             </p>
-            <ol start="1">
-                <li><b>Add <code>navigator.credentials.create()</code> call</b></li>
-            </ol>
+            <p>
+                1. <b>Add <code>navigator.credentials.create()</code> call</b>
+            </p>
             <p>
                 The following is a minimal sample of JavaScript code for creating discoverable credentials using the Web Authentication API in the browser. This code demonstrates the basic flow for communicating with the server-side REST API endpoints described above. <b>Important:</b> This example does not include production-level safeguards for simplicity. For real-world applications, you should add proper error handling and input validation.
             </p>
@@ -329,9 +329,9 @@ async function fetchAttestationResult(credentials) {
 }
 </code></pre>
             </details>
-            <ol start="2">
-                <li><b>Add <code>navigator.credentials.get()</code> call</b></li>
-            </ol>
+            <p>
+                2. <b>Add <code>navigator.credentials.get()</code> call</b>
+            </p>
             <p>
                 The following is a minimal sample of JavaScript code for performing authentication with discoverable credentials using the Web Authentication API in the browser. <b>Important:</b> This example does not include production-level safeguards for simplicity. For real-world applications, you should add proper error handling and input validation.
             </p>
@@ -407,21 +407,21 @@ async function fetchAssertionResult(credentials) {
             <p>
                 To use Microsoft SQL Server as your credential store, follow these steps:
             </p>
-            <ol start="1">
-                <li><b>Database Setup</b></li>
-            </ol>
+            <p>
+                1. <b>Database Setup</b>
+            </p>
             <p>
                 Create the necessary database table by executing the SQL table creation script available at <a href="https://github.com/linuxchata/fido2/blob/main/scripts/sqlserver/sqlserver_table_creation.sql" target="_blank" class="resource-link">SQL Server Table Creation Script</a>.
             </p>
-            <ol start="2">
-                <li><b>Package Installation</b></li>
-            </ol>
+            <p>
+                2. <b>Package Installation</b>
+            </p>
             <p>Add the following NuGet packages to your project:</p>
             <pre class="code"><code class="language-bash">dotnet add package Shark.Fido2.SqlServer
 </code></pre>
-            <ol start="3">
-                <li><b>Dependencies Registration</b></li>
-            </ol>
+            <p>
+                3. <b>Dependencies Registration</b>
+            </p>
             <p>
                 Replace the in-memory store registration with Microsoft SQL Server in your <code>Program.cs</code>:
             </p>
@@ -432,9 +432,9 @@ async function fetchAssertionResult(credentials) {
 builder.Services.AddFido2SqlServer();
 builder.Services.AddFido2(builder.Configuration);
 </code></pre>
-            <ol start="4">
-                <li><b>Configuration</b></li>
-            </ol>
+            <p>
+                4. <b>Configuration</b>
+            </p>
             <p>
                 Add the connection string to your <code>appsettings.json</code> or environment-specific configuration file:
             </p>
@@ -448,9 +448,9 @@ builder.Services.AddFido2(builder.Configuration);
             <p>
                 To use Amazon DynamoDB as your credential store, follow these steps:
             </p>
-            <ol start="1">
-                <li><b>Table Setup</b></li>
-            </ol>
+            <p>
+                1. <b>Table Setup</b>
+            </p>
             <p>
                 Create the Amazon DynamoDB table with the following parameters:
             </p>
@@ -481,15 +481,15 @@ builder.Services.AddFido2(builder.Configuration);
                 <li><code>arn:aws:dynamodb:AWS_REGION:AWS_ACCOUNT_ID:table/Credential</code></li>
                 <li><code>arn:aws:dynamodb:AWS_REGION:AWS_ACCOUNT_ID:table/Credential/index/UserNameIndex</code></li>
             </ul>
-            <ol start="2">
-                <li><b>Package Installation</b></li>
-            </ol>
+            <p>
+                2. <b>Package Installation</b>
+            </p>
             <p>Add the following NuGet packages to your project:</p>
             <pre class="code"><code class="language-bash">dotnet add package Shark.Fido2.DynamoDB
 </code></pre>
-            <ol start="3">
-                <li><b>Dependencies Registration</b></li>
-            </ol>
+            <p>
+                3. <b>Dependencies Registration</b>
+            </p>
             <p>
                 Replace the in-memory store registration with Amazon DynamoDB in your <code>Program.cs</code>:
             </p>
@@ -500,9 +500,9 @@ builder.Services.AddFido2(builder.Configuration);
 builder.Services.AddFido2DynamoDB();
 builder.Services.AddFido2(builder.Configuration);
 </code></pre>
-            <ol start="4">
-                <li><b>Configuration</b></li>
-            </ol>
+            <p>
+                4. <b>Configuration</b>
+            </p>
             <p>
                 Add the Amazon DynamoDB configuration to your <code>appsettings.json</code> or environment-specific configuration file:
             </p>
