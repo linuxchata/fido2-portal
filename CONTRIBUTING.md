@@ -13,13 +13,9 @@ This document outlines how to get started, coding conventions, and how to submit
 
    `cd fido2-portal/src`
 
-4. **Build the project**:
+5. **Build the project**:
 
    `dotnet build`
-
-6. **Run tests**:
-
-   `dotnet test`
 
 ## Code Guidelines
 - Follow standard .NET/C# coding practices.
