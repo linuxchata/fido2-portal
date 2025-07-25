@@ -8,4 +8,4 @@ This repository provides a portal for Shark WebAuthn library for .NET. Shark Web
 This project is licensed under the [BSD 3-Clause License](LICENSE).
 
 # Contributing
-See [Contributing](https://github.com/linuxchata/fido2/blob/main/CONTRIBUTING.md) for information about contributing to the project.
+See [Contributing](CONTRIBUTING.md) for information about contributing to the project.
