@@ -15,7 +15,7 @@
                 <li><a href="/Documentation#registration" class="resource-link">Dependencies Registration</a></li>
                 <li><a href="/Documentation#server-side-api" class="resource-link">Server-side API</a></li>
                 <li><a href="/Documentation#client-side-integration" class="resource-link">Client-side Integration</a></li>
-                <li><a href="/Documentation#persistent-datastores" class="resource-link">Persistent Datastores</a></li>
+                <li><a href="/Documentation#persistent-data-stores" class="resource-link">Persistent Data Stores</a></li>
             </ul>
         </nav>
         <div class="main-description">
@@ -268,10 +268,10 @@ app.UseSession();
         <div class="main-description">
             <h3 id="client-side-integration">Client-side Integration</h3>
             <p>
-                To finalize the implementation, you must incorporate JavaScript code that interacts with the browser's Web Authentication API. This API manages the client-side authentication process. Please note that JavaScript files must be placed in the <code>wwwroot</code> folder so the server can serve them as static assets.
+                To finalize the implementation, you must incorporate JavaScript code that interacts with the browser's Web Authentication API. This API manages the client-side authentication process. Please note that JavaScript files must be placed in the <code>wwwroot/js</code> folder so the server can serve them as static assets.
             </p>
             <p>
-                1. <b>Add <code>attestation.js</code> file that has <code>navigator.credentials.create()</code> call</b>
+                1. <b>Add the <code>attestation.js</code> file containing the <code>navigator.credentials.create()</code> invocation</b>
             </p>
             <p>
                 The following is a minimal sample of JavaScript code for creating discoverable credentials using the Web Authentication API in the browser. This code demonstrates the basic flow for communicating with the server-side REST API endpoints described above. <b>Important:</b> This example does not include production-level safeguards for simplicity. For real-world applications, you should add proper error handling and input validation.
@@ -364,7 +364,7 @@ window.requestCreateCredentialOptions = requestCreateCredentialOptions;
 </code></pre>
             </details>
             <p>
-                2. <b>Add <code>assertion.js</code> file that has <code>navigator.credentials.get()</code> call</b>
+                2. <b>Add the <code>assertion.js</code> file containing the <code>navigator.credentials.get()</code> invocation</b>
             </p>
             <p>
                 The following is a minimal sample of JavaScript code for performing authentication with discoverable credentials using the Web Authentication API in the browser. <b>Important:</b> This example does not include production-level safeguards for simplicity. For real-world applications, you should add proper error handling and input validation.
@@ -441,7 +441,19 @@ window.requestVerifyCredentialOptions = requestVerifyCredentialOptions;
                 Add <a href="https://github.com/linuxchata/fido2/blob/main/src/Shark.Fido2.Sample/wwwroot/js/utilities.js" target="_blank" class="resource-link">utility functions</a> to convert between Base64URL strings and Uint8Array byte arrays, ensuring proper encoding and decoding for binary data used in web authentication operations.
             </p>
             <p>
-                4. <b>Reference JavaScript files</b>
+                4. <b>Add HTML markup</b>
+            </p>
+            <p>
+                Add the HTML markup to support credential registration and authentication. Refer to the sample <a href="https://github.com/linuxchata/fido2/blob/main/src/Shark.Fido2.Sample/Pages/Index.cshtml" target="_blank" class="resource-link">Index.cshtml</a> file for an example.
+            </p>
+            <p>
+                5. <b>Add JavaScript logic for the site</b>
+            </p>
+            <p>
+                Add JavaScript logic to connect the HTML markup with credential registration and authentication functionality. Refer to the sample <a href="https://github.com/linuxchata/fido2/blob/main/src/Shark.Fido2.Sample/wwwroot/js/site.js" target="_blank" class="resource-link">site.js</a> file for an example.
+            </p>
+            <p>
+                6. <b>Reference JavaScript files</b>
             </p>
             <p>
                 Reference JavaScript files in <code>_Layout.cshtml</code>.
@@ -449,12 +461,16 @@ window.requestVerifyCredentialOptions = requestVerifyCredentialOptions;
             <pre class="code"><code class="language-js">&lt;script src="~/js/attestation.js" asp-append-version="true"&gt;&lt;/script&gt;
 &lt;script src="~/js/assertion.js" asp-append-version="true"&gt;&lt;/script&gt;
 &lt;script src="~/js/utilities.js" asp-append-version="true"&gt;&lt;/script&gt;
+&lt;script src="~/js/site.js" asp-append-version="true"&gt;&lt;/script&gt;
 </code></pre>
+            <p>
+                7. <b>Run the ASP.NET Core application over HTTPS</b>
+            </p>
             <h4 id="browsers-support">Browsers Support</h4>
             <p>Up-to-date details regarding the Web Authentication API support across modern browsers can be found on <a href="https://caniuse.com/webauthn" target="_blank" class="resource-link">Can I use</a> page.</p>
         </div>
         <div class="main-description">
-            <h3 id="persistent-datastores">Persistent Datastores</h3>
+            <h3 id="persistent-data-stores">Persistent Data Stores</h3>
             <p>
                 For production environments, you should use a persistent credential store instead of the in-memory implementation. <b>Shark WebAuthn</b> provides support for various database providers.
             </p>
