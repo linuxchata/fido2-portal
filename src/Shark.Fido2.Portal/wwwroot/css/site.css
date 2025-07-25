@@ -70,7 +70,8 @@ input:disabled {
 }
 
 ol {
-    padding-left: 1rem;
+    margin-left: 1rem;
+    padding: 0;
 }
 
 .navbar {
