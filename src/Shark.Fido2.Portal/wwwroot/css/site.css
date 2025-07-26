@@ -77,6 +77,14 @@ input:disabled {
     border: none;
 }
 
+.nav-link:hover {
+    background-color: yellow;
+}
+
+.nav-link.active {
+    background-color: green;
+}
+
 .banner {
     font-weight: 500;
     color: var(--color-link);
