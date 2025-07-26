@@ -8,6 +8,7 @@
     --color-dark: #202124;
     --color-light: #fff;
     --color-background: #f6f8fa;
+    --color-background-darker: #e8ebef;
     --color-border: #dadce0;
     --color-muted: #5f6368;
     --color-text: #333;
@@ -78,11 +79,7 @@ input:disabled {
 }
 
 .nav-link:hover {
-    background-color: yellow;
-}
-
-.nav-link.active {
-    background-color: green;
+    background-color: var(--color-background-darker);
 }
 
 .banner {
