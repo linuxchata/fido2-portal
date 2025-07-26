@@ -76,6 +76,10 @@ input:disabled {
 
 .navbar-toggler {
     border: none;
+    padding: 0px;
+    font-size: 1rem;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 .nav-link:hover {
