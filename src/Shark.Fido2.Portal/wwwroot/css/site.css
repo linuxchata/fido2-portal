@@ -82,10 +82,6 @@ input:disabled {
     box-shadow: none !important;
 }
 
-.nav-link:hover {
-    background-color: var(--color-background-darker);
-}
-
 .banner {
     font-weight: 500;
     color: var(--color-link);
@@ -416,6 +412,10 @@ pre.code {
         padding-left: 0.5rem !important;
         padding-right: 0.5rem !important;
     }
+
+        .nav-link:hover {
+            background-color: var(--color-background-darker);
+        }
 
     .btn-github {
         padding-left: 0.5rem;
