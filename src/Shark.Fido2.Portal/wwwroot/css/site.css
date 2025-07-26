@@ -8,7 +8,7 @@
     --color-dark: #202124;
     --color-light: #fff;
     --color-background: #f6f8fa;
-    --color-background-darker: #d8dee4;
+    --color-background-darker: #e3e7eb;
     --color-border: #dadce0;
     --color-muted: #5f6368;
     --color-text: #333;
@@ -413,6 +413,7 @@ pre.code {
         padding-right: 0.5rem !important;
     }
 
+        .nav-link.hovered,
         .nav-link:hover {
             background-color: var(--color-background-darker);
         }
