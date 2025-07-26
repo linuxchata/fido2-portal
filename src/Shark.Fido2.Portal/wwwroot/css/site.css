@@ -8,7 +8,7 @@
     --color-dark: #202124;
     --color-light: #fff;
     --color-background: #f6f8fa;
-    --color-background-darker: #dde2e7;
+    --color-background-darker: #d8dee4;
     --color-border: #dadce0;
     --color-muted: #5f6368;
     --color-text: #333;
@@ -76,7 +76,7 @@ input:disabled {
 
 .navbar-toggler {
     border: none;
-    padding: 0px;
+    padding: 0;
     font-size: 1rem;
     outline: none !important;
     box-shadow: none !important;
