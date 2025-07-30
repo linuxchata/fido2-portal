@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Home page - Main landing page -->
+  <!-- Main landing page -->
   <url>
     <loc>https://shark-fido2.com/</loc>
-    <lastmod>2024-07-22</lastmod>
+    <lastmod>2024-07-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Documentation page - Documentation page -->
+  <!-- Documentation page -->
   <url>
     <loc>https://shark-fido2.com/Documentation</loc>
     <lastmod>2024-07-30</lastmod>
@@ -16,7 +16,7 @@
     <priority>0.9</priority>
   </url>
 
-  <!-- Non-discoverable Credentials demo - Non-resident keys demonstration -->
+  <!-- Non-discoverable Credentials demonstration - Non-resident keys demonstration -->
   <url>
     <loc>https://shark-fido2.com/NonDiscoverableCredentials</loc>
     <lastmod>2024-07-25</lastmod>
@@ -24,10 +24,10 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Discoverable Credentials demo - Resident keys demonstration -->
+  <!-- Discoverable Credentials demonstration - Resident keys demonstration -->
   <url>
     <loc>https://shark-fido2.com/DiscoverableCredentials</loc>
-    <lastmod>2024-07-25</lastmod>
+    <lastmod>2024-07-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
