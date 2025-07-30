@@ -280,7 +280,7 @@ app.UseSession();
             </p>
             <details>
                 <summary>Click to expand</summary>
-                <pre class="code"><code class="language-js">async function requestCreateCredentialOptions(username, displayName) {
+                <pre class="code"><code class="language-js">async function registration(username, displayName) {
     const optionsRequest = {
         username: username,
         displayName: displayName,
@@ -363,7 +363,7 @@ async function fetchAttestationResult(credentials) {
     });
 }
 
-window.requestCreateCredentialOptions = requestCreateCredentialOptions;
+window.registration = registration;
 </code></pre>
             </details>
             <p>
@@ -374,7 +374,7 @@ window.requestCreateCredentialOptions = requestCreateCredentialOptions;
             </p>
             <details>
                 <summary>Click to expand</summary>
-                <pre class="code"><code class="language-js">async function requestVerifyCredentialOptions() {
+                <pre class="code"><code class="language-js">async function authentication() {
     const optionsRequest = {};
     const options = await fetchAssertionOptions(optionsRequest);
     await requestCredential(options);
@@ -431,7 +431,7 @@ async function fetchAssertionResult(credentials) {
     });
 }
 
-window.requestVerifyCredentialOptions = requestVerifyCredentialOptions;
+window.authentication = authentication;
 </code></pre>
             </details>
             <p>
