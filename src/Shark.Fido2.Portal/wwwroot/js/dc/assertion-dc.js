@@ -1,8 +1,8 @@
-﻿// Authentication
+﻿// Authentication with a public key credential using the Web Authentication API
 
 const authenticationTitle = 'Web Authentication';
 
-async function requestVerifyDiscoverableCredentialOptions() {
+async function authenticationWithDiscoverableCredential() {
     const optionsRequest = { };
 
     const options = await fetchAssertionOptions(optionsRequest);
@@ -88,4 +88,4 @@ async function fetchAssertionResult(credentials) {
     }
 }
 
-window.requestVerifyDiscoverableCredentialOptions = requestVerifyDiscoverableCredentialOptions;
+window.authenticationWithDiscoverableCredential = authenticationWithDiscoverableCredential;

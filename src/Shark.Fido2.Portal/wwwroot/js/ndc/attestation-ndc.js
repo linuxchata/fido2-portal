@@ -1,16 +1,16 @@
-﻿// Registration
+﻿// Registration of a public key credential using the Web Authentication API
 
 const registrationTitle = 'Web Authentication';
 
-async function requestCreateDiscoverableCredentialOptions(username, displayName) {
+async function registration(username, displayName) {
     const optionsRequest = {
         username: username,
         displayName: displayName,
         attestation: 'direct',
         authenticatorSelection: {
-            residentKey: 'required',
-            userVerification: 'required',
-            requireResidentKey: true
+            residentKey: 'preferred',
+            userVerification: 'preferred',
+            requireResidentKey: false
         }
     };
 
@@ -118,4 +118,4 @@ async function fetchAttestationResult(credentials) {
     }
 }
 
-window.requestCreateDiscoverableCredentialOptions = requestCreateDiscoverableCredentialOptions;
+window.registration = registration;

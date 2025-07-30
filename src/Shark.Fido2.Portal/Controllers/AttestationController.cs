@@ -31,7 +31,7 @@ public class AttestationController(IAttestation attestation, ILogger<AssertionCo
         ServerPublicKeyCredentialCreationOptionsRequest request,
         CancellationToken cancellationToken)
     {
-        var createOptions = await _attestation.CreateOptions(request.Map(), cancellationToken);
+        var createOptions = await _attestation.BeginRegistration(request.Map(), cancellationToken);
 
         var response = createOptions.Map();
 
@@ -60,7 +60,7 @@ public class AttestationController(IAttestation attestation, ILogger<AssertionCo
 
         var createOptions = JsonSerializer.Deserialize<PublicKeyCredentialCreationOptions>(createOptionsString!);
 
-        var response = await _attestation.Complete(request.Map(), createOptions!, cancellationToken);
+        var response = await _attestation.CompleteRegistration(request.Map(), createOptions!, cancellationToken);
 
         if (response.IsValid)
         {

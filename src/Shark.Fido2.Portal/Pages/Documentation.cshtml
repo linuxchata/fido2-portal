@@ -23,6 +23,9 @@
             <p>
                 <b>Shark WebAuthn</b> .NET library provides a server-side implementation of the WebAuthn standard, enabling secure passwordless and multi-factor authentication (MFA) for web applications. It supports key WebAuthn operations – credential registration and authentication – ensuring compliance with the <a href="https://www.w3.org/TR/webauthn-2/" class="resource-link">WebAuthn Level 2 specification</a> (Web Authentication: An API for accessing Public Key Credentials Level 2). <b>Shark WebAuthn</b> is written in .NET 8, making it suitable for modern ASP.NET Core applications and environments.
             </p>
+            <p>
+                The library exposes high-level APIs for both registration and authentication flows, including <code>BeginRegistration</code> and <code>CompleteRegistration</code> for generating <code>PublicKeyCredentialCreationOptions</code> and processing the attestation response during credential registration, and <code>BeginAuthentication</code> and <code>CompleteAuthentication</code> for generating <code>PublicKeyCredentialRequestOptions</code> and validating the assertion response during authentication. This enables seamless integration with the browser's Web Authentication API while ensuring standards-compliant and secure public key credential handling.
+            </p>
         </div>
         <div class="main-description">
             <h3 id="installation">Package Installation</h3>
@@ -187,7 +190,7 @@ public class AttestationController : ControllerBase
             <pre class="code"><code class="language-csharp">[HttpPost("options")]
 public async Task&lt;IActionResult&gt; Options(ServerPublicKeyCredentialCreationOptionsRequest request, CancellationToken cancellationToken)
 {
-    var createOptions = await _attestation.CreateOptions(request.Map(), cancellationToken);
+    var createOptions = await _attestation.BeginRegistration(request.Map(), cancellationToken);
     var response = createOptions.Map();
     HttpContext.Session.SetString("CreateOptions", JsonSerializer.Serialize(createOptions));
     return Ok(response);
@@ -201,7 +204,7 @@ public async Task&lt;IActionResult&gt; Result(ServerPublicKeyCredentialAttestati
 {
     var createOptionsString = HttpContext.Session.GetString("CreateOptions");
     var createOptions = JsonSerializer.Deserialize&lt;PublicKeyCredentialCreationOptions&gt;(createOptionsString!);
-    await _attestation.Complete(request.Map(), createOptions!, cancellationToken);
+    await _attestation.CompleteRegistration(request.Map(), createOptions!, cancellationToken);
     return Ok(ServerResponse.Create());
 }
 </code></pre>
@@ -230,7 +233,7 @@ public class AssertionController : ControllerBase
             <pre class="code"><code class="language-csharp">[HttpPost("options")]
 public async Task&lt;IActionResult&gt; Options(ServerPublicKeyCredentialGetOptionsRequest request, CancellationToken cancellationToken)
 {
-    var requestOptions = await _assertion.RequestOptions(request.Map(), cancellationToken);
+    var requestOptions = await _assertion.BeginAuthentication(request.Map(), cancellationToken);
     var response = requestOptions.Map();
     HttpContext.Session.SetString("RequestOptions", JsonSerializer.Serialize(requestOptions));
     return Ok(response);
@@ -244,7 +247,7 @@ public async Task&lt;IActionResult&gt; Result(ServerPublicKeyCredentialAssertion
 {
     var requestOptionsString = HttpContext.Session.GetString("RequestOptions");
     var requestOptions = JsonSerializer.Deserialize&lt;PublicKeyCredentialRequestOptions&gt;(requestOptionsString!);
-    await _assertion.Complete(request.Map(), requestOptions!, cancellationToken);
+    await _assertion.CompleteAuthentication(request.Map(), requestOptions!, cancellationToken);
     return Ok(ServerResponse.Create());
 }
 </code></pre>

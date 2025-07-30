@@ -47,7 +47,7 @@
             await handleAsyncAction(
                 this,
                 getById('signupForm'),
-                () => requestCreateDiscoverableCredentialOptions(userName, displayName),
+                () => registrationOfDiscoverableCredential(userName, displayName),
                 this.textContent
             );
         });
@@ -65,7 +65,7 @@
             await handleAsyncAction(
                 this,
                 getById('signinForm'),
-                () => requestVerifyDiscoverableCredentialOptions(),
+                () => authenticationWithDiscoverableCredential(),
                 this.textContent
             );
 

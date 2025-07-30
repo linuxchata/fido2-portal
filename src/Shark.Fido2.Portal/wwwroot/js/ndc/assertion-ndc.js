@@ -1,8 +1,8 @@
-﻿// Authentication
+﻿// Authentication with a public key credential using the Web Authentication API
 
 const authenticationTitle = 'Web Authentication';
 
-async function requestVerifyCredentialOptions(username) {
+async function authentication(username) {
     const optionsRequest = {
         username: username
     };
@@ -94,4 +94,4 @@ async function fetchAssertionResult(credentials) {
     }
 }
 
-window.requestVerifyCredentialOptions = requestVerifyCredentialOptions;
+window.authentication = authentication;
