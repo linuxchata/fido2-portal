@@ -47,7 +47,7 @@
             await handleAsyncAction(
                 this,
                 getById('signupForm'),
-                () => requestCreateCredentialOptions(userName, displayName),
+                () => registration(userName, displayName),
                 this.textContent
             );
         });
@@ -68,7 +68,7 @@
             await handleAsyncAction(
                 this,
                 getById('signinForm'),
-                () => requestVerifyCredentialOptions(userName),
+                () => authentication(userName),
                 this.textContent
             );
 
