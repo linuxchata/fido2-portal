@@ -21,11 +21,17 @@
         <div class="main-description">
             <h3 id="overview">Overview</h3>
             <p>
-                <b>Shark WebAuthn</b> .NET library provides a server-side implementation of the WebAuthn standard, enabling secure passwordless and multi-factor authentication (MFA) for web applications. It supports key WebAuthn operations – credential registration and authentication – ensuring compliance with the <a href="https://www.w3.org/TR/webauthn-2/" class="resource-link">WebAuthn Level 2 specification</a> (Web Authentication: An API for accessing Public Key Credentials Level 2). <b>Shark WebAuthn</b> is written in .NET 8, making it suitable for modern ASP.NET Core applications and environments.
+                <b>Shark WebAuthn</b> is a .NET library that provides a server-side implementation of the WebAuthn standard, enabling secure passwordless and multi-factor authentication (MFA) for web applications. It supports key WebAuthn operations, such as <b>public key credential registration</b> and <b>authentication</b>, ensuring compliance with the <a href="https://www.w3.org/TR/webauthn-2/" target="_blank" class="resource-link">WebAuthn Level 2 specification</a>. More information about the Web Authentication API is available on the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API" target="_blank" class="resource-link">MDN Web Docs</a> site.
             </p>
+            <p>The library is written in <b>.NET 8</b>, making it suitable for modern <b>ASP.NET Core</b> applications and environments.</p>
             <p>
-                The library exposes high-level APIs for both registration and authentication flows, including <code>BeginRegistration</code> and <code>CompleteRegistration</code> for generating <code>PublicKeyCredentialCreationOptions</code> and processing the attestation response during credential registration, and <code>BeginAuthentication</code> and <code>CompleteAuthentication</code> for generating <code>PublicKeyCredentialRequestOptions</code> and validating the assertion response during authentication. This enables seamless integration with the browser's Web Authentication API while ensuring standards-compliant and secure public key credential handling.
+                <b>Shark WebAuthn</b> exposes high-level APIs for both registration and authentication flows:
+                <ul>
+                    <li><code>BeginRegistration</code> and <code>CompleteRegistration</code> generate <code>PublicKeyCredentialCreationOptions</code> and process the attestation response during public key credential registration.</li>
+                    <li><code>BeginAuthentication</code> and <code>CompleteAuthentication</code> generate <code>PublicKeyCredentialRequestOptions</code> and validate the assertion response during authentication.</li>
+                </ul>
             </p>
+            <p>These APIs enables integration with the browser's Web Authentication API while ensuring standards-compliant and secure public key credential handling.</p>
         </div>
         <div class="main-description">
             <h3 id="installation">Package Installation</h3>
@@ -438,7 +444,7 @@ window.authentication = authentication;
 </code></pre>
             </details>
             <p>
-                This JavaScript code bridges the browser's Web Authentication API with the server-side REST API endpoints provided by the ASP.NET Core controllers described above. More information about the Web Authentication API is available on the MDN Web Docs site at <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API" target="_blank" class="resource-link">developer.mozilla.org</a> page.
+                This JavaScript code bridges the browser's Web Authentication API with the server-side REST API endpoints provided by the ASP.NET Core controllers described above.
             </p>
             <p>
                 3. <b>Add utilities functions</b>
@@ -585,7 +591,7 @@ builder.Services.AddFido2(builder.Configuration);
             </p>
             <pre class="code"><code class="language-json">{
   "AmazonDynamoDbConfiguration": {
-    "AwsRegion": "",
+    "AwsRegion": "eu-central-1",
     "ConnectTimeoutInSeconds": 10,
     "MaxErrorRetry": 3,
     "AccessKey": "",
