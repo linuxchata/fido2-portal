@@ -131,13 +131,13 @@ dotnet add package Shark.Fido2.InMemory
             <h4 id="troubleshooting">Troubleshooting</h4>
             <ul>
                 <li>If authentication fails with an "origin" error, verify that the <code>Origins</code> array matches the actual origin of your frontend application.</li>
-                <li>If using the Metadata Service, ensure your application can reach the URLs specified in <code>MetadataServiceConfiguration</code>.</li>
+                <li>If using the FIDO Metadata Service, ensure your application can reach the URLs specified in <code>MetadataServiceConfiguration</code>.</li>
             </ul>
         </div>
         <div class="main-description">
             <h3 id="registering-dependencies">Registering Dependencies</h3>
             <p>
-                To register the <b>Shark WebAuthn</b> services in your ASP.NET Core application, add the following lines to your <code>Program.cs</code> file:
+                To register the <b>Shark WebAuthn</b> services in your ASP.NET Core application, add the following registrations to your <code>Program.cs</code> file:
             </p>
             <pre class="code"><code class="language-csharp">var builder = WebApplication.CreateBuilder(args);
 
