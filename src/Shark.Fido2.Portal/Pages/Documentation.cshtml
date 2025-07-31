@@ -10,9 +10,9 @@
             <h3>Table of Contents</h3>
             <ul>
                 <li><a href="/Documentation#overview" class="resource-link">Overview</a></li>
-                <li><a href="/Documentation#installation" class="resource-link">Packages Installation</a></li>
+                <li><a href="/Documentation#installing-packages" class="resource-link">Installing Packages</a></li>
                 <li><a href="/Documentation#server-side-configuration" class="resource-link">Server-side Configuration</a></li>
-                <li><a href="/Documentation#registration" class="resource-link">Dependencies Registration</a></li>
+                <li><a href="/Documentation#registering-dependencies" class="resource-link">Registering Dependencies</a></li>
                 <li><a href="/Documentation#server-side-api" class="resource-link">Server-side API</a></li>
                 <li><a href="/Documentation#client-side-integration" class="resource-link">Client-side Integration</a></li>
                 <li><a href="/Documentation#persistent-data-stores" class="resource-link">Persistent Data Stores</a></li>
@@ -34,7 +34,7 @@
             <p>These APIs enables integration with the browser's Web Authentication API while ensuring standards-compliant and secure public key credential handling.</p>
         </div>
         <div class="main-description">
-            <h3 id="installation">Package Installation</h3>
+            <h3 id="installing-packages">Installing Packages</h3>
             <p>
                 To begin integrating <b>Shark WebAuthn</b> into your ASP.NET Core application, add the following NuGet packages to your project:
             </p>
@@ -43,7 +43,7 @@ dotnet add package Shark.Fido2.Models
 dotnet add package Shark.Fido2.InMemory
 </code></pre>
             <p>
-                These packages provide the core WebAuthn functionality, data models, and an in-memory credential repository for development and testing. For production, consider using a persistent credential store instead of the in-memory implementation. See the <a href="/Documentation#persistent-datastores" class="resource-link">Persistent Datastores</a> section for details on integrating with Microsoft SQL Server and Amazon DynamoDB.
+                These packages provide the core WebAuthn functionality, data models, and an in-memory credential repository for development and testing. For production, consider using a persistent credential store instead of the in-memory implementation. See the <a href="/Documentation#persistent-data-stores" class="resource-link">Persistent Data Stores</a> section for details on integrating with Microsoft SQL Server and Amazon DynamoDB.
             </p>
         </div>
         <div class="main-description">
@@ -135,7 +135,7 @@ dotnet add package Shark.Fido2.InMemory
             </ul>
         </div>
         <div class="main-description">
-            <h3 id="registration">Dependency Registration</h3>
+            <h3 id="registering-dependencies">Registering Dependencies</h3>
             <p>
                 To register the <b>Shark WebAuthn</b> services in your ASP.NET Core application, add the following lines to your <code>Program.cs</code> file:
             </p>
