@@ -170,6 +170,7 @@ input:disabled {
     .main-description h4 {
         font-size: var(--font-size-md);
         color: var(--color-dark);
+        margin-top: 2rem;
     }
 
     .main-description p {

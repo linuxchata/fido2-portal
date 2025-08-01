@@ -497,13 +497,13 @@ window.authentication = authentication;
                 Create the necessary database table by executing the SQL table creation script available at <a href="https://github.com/linuxchata/fido2/blob/main/scripts/sqlserver/sqlserver_table_creation.sql" target="_blank" class="resource-link">SQL Server Table Creation Script</a>.
             </p>
             <p>
-                2. <b>Package Installation</b>
+                2. <b>Installing Package</b>
             </p>
             <p>Add the following NuGet packages to your project:</p>
             <pre class="code"><code class="language-bash">dotnet add package Shark.Fido2.SqlServer
 </code></pre>
             <p>
-                3. <b>Dependency Registration</b>
+                3. <b>Registering Dependencies</b>
             </p>
             <p>
                 Replace the in-memory store registration with Microsoft SQL Server in your <code>Program.cs</code>:
@@ -565,13 +565,13 @@ builder.Services.AddFido2(builder.Configuration);
                 <li><code>arn:aws:dynamodb:AWS_REGION:AWS_ACCOUNT_ID:table/Credential/index/UserNameIndex</code></li>
             </ul>
             <p>
-                2. <b>Package Installation</b>
+                2. <b>Installing Package</b>
             </p>
             <p>Add the following NuGet packages to your project:</p>
             <pre class="code"><code class="language-bash">dotnet add package Shark.Fido2.DynamoDB
 </code></pre>
             <p>
-                3. <b>Dependency Registration</b>
+                3. <b>Registering Dependencies</b>
             </p>
             <p>
                 Replace the in-memory store registration with Amazon DynamoDB in your <code>Program.cs</code>:
