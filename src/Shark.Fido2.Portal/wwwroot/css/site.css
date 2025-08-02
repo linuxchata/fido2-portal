@@ -24,8 +24,9 @@
     /* Typography */
     --font-size-base: 1rem;
     --font-size-mobile: 1.1rem;
-    --font-size-xxl: 2.25rem;
-    --font-size-xl: 1.75rem;
+    --font-size-xxxl: 2.25rem;
+    --font-size-xxl: 2rem;
+    --font-size-xl: 1.5rem;
     --font-size-md: 1.25rem;
     --font-size-sm: 1rem;
     --font-size-xs: 0.9rem;
@@ -135,7 +136,7 @@ input:disabled {
 }
 
     .main-header h2 {
-        font-size: var(--font-size-xxl);
+        font-size: var(--font-size-xxxl);
         font-weight: bold;
         color: var(--color-dark);
     }
@@ -163,12 +164,12 @@ input:disabled {
 }
 
     .main-description h3 {
-        font-size: var(--font-size-xl);
+        font-size: var(--font-size-xxl);
         color: var(--color-dark);
     }
 
     .main-description h4 {
-        font-size: var(--font-size-md);
+        font-size: var(--font-size-xl);
         color: var(--color-dark);
         margin-top: 2rem;
     }
