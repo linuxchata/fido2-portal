@@ -599,6 +599,35 @@ builder.Services.AddFido2(builder.Configuration);
   }
 }
 </code></pre>
+            <h4 id="custom-implementation">Custom Implementation</h4>
+            <p>
+                If your application uses a database provider that is not yet supported out of the box, you can create a custom persistent credential store by implementing the <code>ICredentialRepository</code> interface.
+            </p>
+            <p>
+                1. <b>Implementing the Interface</b>
+            </p>
+            <p>
+                Create a new class that implements the <code>ICredentialRepository</code> interface from the <code>Shark.Fido2.Core.Abstractions.Repositories</code> namespace. This interface defines the contract required for storing and retrieving credentials.
+            </p>
+            <p>
+                2. <b>Registering Your Implementation</b>
+            </p>
+            <p>
+                Register your custom repository with the DI container in <code>Program.cs</code>:
+            </p>
+<pre class="code"><code class="language-csharp">var builder = WebApplication.CreateBuilder(args);
+
+// Other service registrations
+
+builder.Services.AddScoped&lt;ICredentialRepository, CustomCredentialRepository&gt;();
+builder.Services.AddFido2(builder.Configuration);
+</code></pre>
+            <p>
+                3. <b>Configuration</b>
+            </p>
+            <p>
+                Add your custom store settings to <code>appsettings.json</code> or environment-specific configuration file, and bind it as needed in your class using <code>IConfiguration</code>.
+            </p>
         </div>
     </div>
 </div>
