@@ -46,6 +46,13 @@ builder.Services.AddFido2(builder.Configuration);
 builder.Services.AddTransient<IChallengeGenerator, CustomChallengeGenerator>();
 builder.Services.AddTransient<ICredentialService, CredentialService>();
 
+builder.Services.AddHsts(options =>
+{
+    options.Preload = true;
+    options.IncludeSubDomains = false;
+    options.MaxAge = TimeSpan.FromDays(365);
+});
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
