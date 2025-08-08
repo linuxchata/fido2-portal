@@ -499,4 +499,8 @@ pre.code {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
     }
+
+    .toc-block ul li {
+        margin-bottom: 4px;
+    }
 }
