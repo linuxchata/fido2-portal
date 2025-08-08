@@ -16,6 +16,7 @@
                 <li><a href="/Documentation#server-side-api" class="toc-link">Server-side API</a></li>
                 <li><a href="/Documentation#client-side-integration" class="toc-link">Client-side Integration</a></li>
                 <li><a href="/Documentation#persistent-data-stores" class="toc-link">Persistent Data Stores</a></li>
+                <li><a href="/Documentation#extension-points" class="toc-link">Extension Points</a></li>
             </ul>
         </nav>
         <div class="main-description">
@@ -636,6 +637,36 @@ builder.Services.AddFido2(builder.Configuration);
             <p>
                 Add your custom store settings to <code>appsettings.json</code> or environment-specific configuration file, and bind it as needed in your class using <code>IConfiguration</code>.
             </p>
+        </div>
+        <div class="main-description">
+            <h3 id="extension-points">Extension Points</h3>
+            <p>
+                Shark WebAuthn .NET library allows you to replace certain functionalities with custom implementations. This extensibility enables you to tailor the WebAuthn behavior to your specific requirements.
+            </p>
+            <h4 id="challenge-generator">Cryptographic Challenge Generator</h4>
+            <p>
+                The most notable example is the <code>IChallengeGenerator</code> interface, which represents the logic to generate cryptographic challenges used in WebAuthn operations.
+            </p>
+            <p>
+                To provide a custom logic for cryptographic challenge generation, implement the interface:
+            </p>
+            <pre class="code"><code class="language-csharp">public sealed class CustomChallengeGenerator : IChallengeGenerator
+{
+    public byte[] Get()
+    {
+        Span&lt;byte&gt; challengeSpan = stackalloc byte[37];
+        RandomNumberGenerator.Fill(challengeSpan);
+        return challengeSpan.ToArray();
+    }
+}
+</code></pre>
+            <p>
+                Then replace the default implementation in the dependency injection container:
+            </p>
+            <pre class="code"><code class="language-csharp">builder.Services.AddFido2InMemoryStore();
+builder.Services.AddFido2(builder.Configuration);
+builder.Services.AddTransient&lt;IChallengeGenerator, CustomChallengeGenerator&gt;();
+</code></pre>
         </div>
     </div>
 </div>
