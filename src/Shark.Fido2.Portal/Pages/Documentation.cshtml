@@ -9,23 +9,23 @@
         <nav class="toc-block" aria-label="Table of Contents">
             <h3>Table of Contents</h3>
             <ul>
-                <li><a href="/Documentation#overview" class="resource-link">Overview</a></li>
-                <li><a href="/Documentation#installing-packages" class="resource-link">Installing Packages</a></li>
-                <li><a href="/Documentation#server-side-configuration" class="resource-link">Server-side Configuration</a></li>
-                <li><a href="/Documentation#registering-dependencies" class="resource-link">Registering Dependencies</a></li>
-                <li><a href="/Documentation#server-side-api" class="resource-link">Server-side API</a></li>
-                <li><a href="/Documentation#client-side-integration" class="resource-link">Client-side Integration</a></li>
-                <li><a href="/Documentation#persistent-data-stores" class="resource-link">Persistent Data Stores</a></li>
+                <li><a href="/Documentation#overview" class="toc-link">Overview</a></li>
+                <li><a href="/Documentation#installing-packages" class="toc-link">Installing Packages</a></li>
+                <li><a href="/Documentation#server-side-configuration" class="toc-link">Server-side Configuration</a></li>
+                <li><a href="/Documentation#registering-dependencies" class="toc-link">Registering Dependencies</a></li>
+                <li><a href="/Documentation#server-side-api" class="toc-link">Server-side API</a></li>
+                <li><a href="/Documentation#client-side-integration" class="toc-link">Client-side Integration</a></li>
+                <li><a href="/Documentation#persistent-data-stores" class="toc-link">Persistent Data Stores</a></li>
             </ul>
         </nav>
         <div class="main-description">
             <h3 id="overview">Overview</h3>
             <p>
-                <b>Shark WebAuthn</b> is a .NET library that provides a server-side implementation of the WebAuthn standard, enabling secure passwordless and multi-factor authentication (MFA) for web applications. It supports key WebAuthn operations, such as <b>public key credential registration</b> and <b>authentication</b>, ensuring compliance with the <a href="https://www.w3.org/TR/webauthn-2/" target="_blank" class="resource-link">WebAuthn Level 2 specification</a>. More information about the Web Authentication API is available on the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API" target="_blank" class="resource-link">MDN Web Docs</a> site.
+                Shark WebAuthn is a .NET library that provides a server-side implementation of the WebAuthn standard, enabling secure passwordless and multi-factor authentication (MFA) for web applications. It supports key WebAuthn operations, such as <b>public key credential registration</b> and <b>authentication</b>, ensuring compliance with the <a href="https://www.w3.org/TR/webauthn-2/" target="_blank" class="resource-link">WebAuthn Level 2 specification</a>. More information about the Web Authentication API is available on the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API" target="_blank" class="resource-link">MDN Web Docs</a> site.
             </p>
-            <p>The library is written in <b>.NET 8</b>, making it suitable for modern <b>ASP.NET Core</b> applications and environments.</p>
+            <p>The library is written in .NET 8, making it suitable for modern ASP.NET Core applications and environments.</p>
             <p>
-                <b>Shark WebAuthn</b> exposes high-level APIs for both registration and authentication flows:
+                Shark WebAuthn exposes high-level APIs for both registration and authentication flows:
                 <ul>
                     <li><code>BeginRegistration</code> and <code>CompleteRegistration</code> generate <code>PublicKeyCredentialCreationOptions</code> and process the attestation response during public key credential registration.</li>
                     <li><code>BeginAuthentication</code> and <code>CompleteAuthentication</code> generate <code>PublicKeyCredentialRequestOptions</code> and validate the assertion response during authentication.</li>
@@ -36,7 +36,7 @@
         <div class="main-description">
             <h3 id="installing-packages">Installing Packages</h3>
             <p>
-                To begin integrating <b>Shark WebAuthn</b> into your ASP.NET Core application, add the following NuGet packages to your project:
+                To begin integrating Shark WebAuthn into your ASP.NET Core application, add the following NuGet packages to your project:
             </p>
             <pre class="code"><code class="language-bash">dotnet add package Shark.Fido2.Core
 dotnet add package Shark.Fido2.Models
@@ -49,7 +49,7 @@ dotnet add package Shark.Fido2.InMemory
         <div class="main-description">
             <h3 id="server-side-configuration">Server-side Configuration</h3>
             <p>
-                <b>Shark WebAuthn</b> .NET library requires specific configuration to operate as a WebAuthn relying party. Configuration is typically provided via the <code>Fido2Configuration</code> section in your application's configuration files (e.g., <code>appsettings.json</code>, <code>appsettings.Production.json</code>). This section details all available configuration options, their default values, and their intended usage.
+                Shark WebAuthn .NET library requires specific configuration to operate as a WebAuthn relying party. Configuration is typically provided via the <code>Fido2Configuration</code> section in your application's configuration files (e.g., <code>appsettings.json</code>, <code>appsettings.Production.json</code>). This section details all available configuration options, their default values, and their intended usage.
             </p>
             <h4 id="configuration-schema">Configuration Schema</h4>
             <p>The following is an example of the server-side configuration.</p>
@@ -137,7 +137,7 @@ dotnet add package Shark.Fido2.InMemory
         <div class="main-description">
             <h3 id="registering-dependencies">Registering Dependencies</h3>
             <p>
-                To register the <b>Shark WebAuthn</b> services in your ASP.NET Core application, add the following registrations to your <code>Program.cs</code> file:
+                To register the Shark WebAuthn services in your ASP.NET Core application, add the following registrations to your <code>Program.cs</code> file:
             </p>
             <pre class="code"><code class="language-csharp">var builder = WebApplication.CreateBuilder(args);
 
@@ -163,7 +163,7 @@ app.MapControllers();
 await app.RunAsync();
 </code></pre>
             <p>
-                <code>AddFido2(builder.Configuration)</code> registers the core <b>Shark WebAuthn</b> services using your application's configuration. <code>AddFido2InMemoryStore()</code> registers an in-memory credential repository, suitable for development and testing. For production, consider using a persistent credential store instead of the in-memory implementation.
+                <code>AddFido2(builder.Configuration)</code> registers the core Shark WebAuthn services using your application's configuration. <code>AddFido2InMemoryStore()</code> registers an in-memory credential repository, suitable for development and testing. For production, consider using a persistent credential store instead of the in-memory implementation.
             </p>
         </div>
         <div class="main-description">
@@ -484,7 +484,7 @@ window.authentication = authentication;
         <div class="main-description">
             <h3 id="persistent-data-stores">Persistent Data Stores</h3>
             <p>
-                For production environments, you should use a persistent credential store instead of the in-memory implementation. <b>Shark WebAuthn</b> provides support for various database providers.
+                For production environments, you should use a persistent credential store instead of the in-memory implementation. Shark WebAuthn provides support for various database providers.
             </p>
             <h4 id="sql-server">Microsoft SQL Server</h4>
             <p>
@@ -613,7 +613,7 @@ builder.Services.AddFido2(builder.Configuration);
                 2. <b>Registering Your Implementation</b>
             </p>
             <p>
-                Register your custom repository with the DI container in <code>Program.cs</code>:
+                Register your custom repository with the dependency injection container in <code>Program.cs</code>:
             </p>
 <pre class="code"><code class="language-csharp">var builder = WebApplication.CreateBuilder(args);
 
