@@ -166,16 +166,21 @@ input:disabled {
     .main-description h3 {
         font-size: var(--font-size-xxl);
         color: var(--color-dark);
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--color-border);
     }
 
     .main-description h4 {
         font-size: var(--font-size-xl);
         color: var(--color-dark);
         margin-top: 2rem;
+        margin-bottom: 1.5rem;
     }
 
     .main-description p {
-        margin: 0 0 1em 0;
+        line-height: 28px;
+        margin: 0 0 0.5em 0;
     }
 
         .main-description p:last-child {
@@ -193,6 +198,23 @@ input:disabled {
 .toc-block {
     margin-bottom: 1.5rem;
 }
+
+    .toc-block ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+
+.toc-link {
+    color: var(--color-primary-link);
+    text-decoration-line: underline;
+    text-underline-offset: 0.1rem;
+    text-decoration-color: rgba(37, 99, 235, 0.25);
+}
+
+    .toc-link:hover {
+        transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    }
 
 .form-group {
     margin-bottom: 10px;
