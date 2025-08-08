@@ -231,6 +231,14 @@ input:disabled {
         background-color: var(--color-toc-link-background);
     }
 
+    /* Prevent hover effects on touch devices */
+    @media (hover: none) and (pointer: coarse) {
+        .toc-link:hover {
+            color: var(--color-toc-link-light);
+            background-color: transparent;
+        }
+    }
+
 .form-group {
     margin-bottom: 10px;
 }
