@@ -667,6 +667,9 @@ builder.Services.AddFido2(builder.Configuration);
 builder.Services.AddFido2(builder.Configuration);
 builder.Services.AddTransient&lt;IChallengeGenerator, CustomChallengeGenerator&gt;();
 </code></pre>
+            <p>
+                Another example of an extension point is the <code>IUserIdGenerator</code> interface, which is responsible for generating user identifiers.
+            </p>
         </div>
     </div>
 </div>
