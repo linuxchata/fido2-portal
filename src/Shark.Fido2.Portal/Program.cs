@@ -49,7 +49,7 @@ builder.Services.AddTransient<ICredentialService, CredentialService>();
 builder.Services.AddHsts(options =>
 {
     options.Preload = true;
-    options.IncludeSubDomains = false;
+    options.IncludeSubDomains = true;
     options.MaxAge = TimeSpan.FromDays(365);
 });
 
