@@ -154,8 +154,8 @@ builder.Services.AddControllers();
 
 // Other service registrations
 
-builder.Services.AddFido2InMemoryStore();
 builder.Services.AddFido2(builder.Configuration);
+builder.Services.AddFido2InMemoryStore();
 
 var app = builder.Build();
 
@@ -521,8 +521,8 @@ window.authentication = authentication;
 
 // Other service registrations
 
-builder.Services.AddFido2SqlServer();
 builder.Services.AddFido2(builder.Configuration);
+builder.Services.AddFido2SqlServer();
 </code></pre>
             <p>
                 4. <b>Configuration</b>
@@ -589,8 +589,8 @@ builder.Services.AddFido2(builder.Configuration);
 
 // Other service registrations
 
-builder.Services.AddFido2DynamoDB();
 builder.Services.AddFido2(builder.Configuration);
+builder.Services.AddFido2DynamoDB();
 </code></pre>
             <p>
                 4. <b>Configuration</b>
@@ -628,8 +628,8 @@ builder.Services.AddFido2(builder.Configuration);
 
 // Other service registrations
 
-builder.Services.AddScoped&lt;ICredentialRepository, CustomCredentialRepository&gt;();
 builder.Services.AddFido2(builder.Configuration);
+builder.Services.AddScoped&lt;ICredentialRepository, CustomCredentialRepository&gt;();
 </code></pre>
             <p>
                 3. <b>Configuration</b>
@@ -663,8 +663,8 @@ builder.Services.AddFido2(builder.Configuration);
             <p>
                 Then replace the default implementation in the dependency injection container:
             </p>
-            <pre class="code"><code class="language-csharp">builder.Services.AddFido2InMemoryStore();
-builder.Services.AddFido2(builder.Configuration);
+            <pre class="code"><code class="language-csharp">builder.Services.AddFido2(builder.Configuration);
+builder.Services.AddFido2InMemoryStore();
 builder.Services.AddTransient&lt;IChallengeGenerator, CustomChallengeGenerator&gt;();
 </code></pre>
             <p>

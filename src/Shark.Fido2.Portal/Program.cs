@@ -41,8 +41,8 @@ builder.Services.AddSession(options =>
     options.Cookie.SameSite = SameSiteMode.Unspecified;
 });
 
-builder.Services.AddFido2InMemoryStore();
 builder.Services.AddFido2(builder.Configuration);
+builder.Services.AddFido2InMemoryStore();
 builder.Services.AddTransient<IChallengeGenerator, CustomChallengeGenerator>();
 builder.Services.AddTransient<ICredentialService, CredentialService>();
 
