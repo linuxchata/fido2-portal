@@ -22,7 +22,7 @@
         <div class="main-description">
             <h3 id="overview">Overview</h3>
             <p>
-                Shark WebAuthn is a .NET library that provides a server-side implementation of the WebAuthn standard, enabling secure passwordless and multi-factor authentication (MFA) for web applications. It supports key WebAuthn operations, such as <b>public key credential registration</b> and <b>authentication</b>, ensuring compliance with the <a href="https://www.w3.org/TR/webauthn-2/" target="_blank" class="resource-link">WebAuthn Level 2 specification</a>.
+                Shark WebAuthn is a .NET library that provides a server-side implementation of the WebAuthn standard, enabling secure passwordless and multi-factor authentication (MFA) for web applications. It supports key WebAuthn operations, such as <b>public key credential registration</b> and <b>authentication</b>, ensuring compliance with the <a href="https://www.w3.org/TR/webauthn-2/" target="_blank" class="resource-link external">WebAuthn Level 2 specification</a>.
             </p>
             <p>The library is written in .NET 8, making it suitable for modern ASP.NET Core applications and environments.</p>
             <p>
@@ -32,14 +32,14 @@
                     <li><code>BeginAuthentication</code> and <code>CompleteAuthentication</code> generate <code>PublicKeyCredentialRequestOptions</code> and validate the assertion response during authentication.</li>
                 </ul>
             </p>
-            <p>These APIs enables integration with the browser's Web Authentication API while ensuring standards-compliant and secure public key credential handling. More information about the Web Authentication API is available on the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API" target="_blank" class="resource-link">MDN Web Docs</a> site.</p>
+            <p>These APIs enables integration with the browser's Web Authentication API while ensuring standards-compliant and secure public key credential handling. More information about the Web Authentication API is available on the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API" target="_blank" class="resource-link external">MDN Web Docs</a> site.</p>
             <h4 id="about-docs">About This Documentation</h4>
             <p>
                 This documentation provides comprehensive guidance for integrating and using the Shark WebAuthn .NET library to implement passwordless and multi-factor authentication in ASP.NET Core web applications. It covers server-side configuration, API usage, persistent data storage options, and provides sample client-side integration. Please note that session management and client-side code are not part of the library itself and are offered only as sample references to assist with implementation.
             </p>
             <h4 id="licence">Licence</h4>
             <p>
-                Shark WebAuthn is fully open source, with every component freely available on <a href="https://github.com/linuxchata/fido2" target="_blank" class="resource-link">GitHub</a> under the permissive <a href="https://github.com/linuxchata/fido2/blob/main/LICENSE" target="_blank" class="resource-link">BSD 3-Clause License</a>.
+                Shark WebAuthn is fully open source, with every component freely available on <a href="https://github.com/linuxchata/fido2" target="_blank" class="resource-link external">GitHub</a> under the permissive <a href="https://github.com/linuxchata/fido2/blob/main/LICENSE" target="_blank" class="resource-link external">BSD 3-Clause License</a>.
             </p>
         </div>
         <div class="main-description">
@@ -106,9 +106,9 @@ dotnet add package Shark.Fido2.InMemory
                     <tr><td><code>RelyingPartyIdName</code></td><td></td><td>Human-palatable identifier for the Relying Party, intended only for display.</td></tr>
                     <tr><td><code>Origins</code></td><td></td><td>List of the fully qualified origins of the Relying Party making the request, passed to the authenticator by the browser.</td></tr>
                     <tr><td><code>Timeout</code></td><td><code>60000</code></td><td>Time, in milliseconds, that the Relying Party is willing to wait for the call to complete.</td></tr>
-                    <tr><td><code>AlgorithmsSet</code></td><td><code>Extended</code></td><td>Set of the supported cryptographic algorithms. Possible values are <code>Required</code>, <code>Recommended</code> or <code>Extended</code>. More information about the cryptographic algorithms is available on the <a href="https://fidoalliance.org/specs/fido-v2.0-rd-20180702/fido-server-v2.0-rd-20180702.html#other" target="_blank" class="resource-link">fidoalliance.org</a> site.</td></tr>
-                    <tr><td><code>AllowNoneAttestation</code></td><td><code>true</code></td><td>Value indicating whether None attestation type is acceptable under Relying Party policy. <a href="https://www.w3.org/TR/webauthn-2/#none" target="_blank" class="resource-link">None attestation</a> is used when the authenticator doesn't have any attestation information available.</td></tr>
-                    <tr><td><code>AllowSelfAttestation</code></td><td><code>true</code></td><td>Value indicating whether Self attestation type is acceptable under Relying Party policy. <a href="https://www.w3.org/TR/webauthn-2/#self-attestation" target="_blank" class="resource-link">Self attestation</a> is used when the authenticator doesn't have a dedicated attestation key pair or a vendor-issued certificate.</td></tr>
+                    <tr><td><code>AlgorithmsSet</code></td><td><code>Extended</code></td><td>Set of the supported cryptographic algorithms. Possible values are <code>Required</code>, <code>Recommended</code> or <code>Extended</code>. More information about the cryptographic algorithms is available on the <a href="https://fidoalliance.org/specs/fido-v2.0-rd-20180702/fido-server-v2.0-rd-20180702.html#other" target="_blank" class="resource-link external">fidoalliance.org</a> site.</td></tr>
+                    <tr><td><code>AllowNoneAttestation</code></td><td><code>true</code></td><td>Value indicating whether None attestation type is acceptable under Relying Party policy. <a href="https://www.w3.org/TR/webauthn-2/#none" target="_blank" class="resource-link external">None attestation</a> is used when the authenticator doesn't have any attestation information available.</td></tr>
+                    <tr><td><code>AllowSelfAttestation</code></td><td><code>true</code></td><td>Value indicating whether Self attestation type is acceptable under Relying Party policy. <a href="https://www.w3.org/TR/webauthn-2/#self-attestation" target="_blank" class="resource-link external">Self attestation</a> is used when the authenticator doesn't have a dedicated attestation key pair or a vendor-issued certificate.</td></tr>
                     <tr><td><code>EnableTrustedExecutionEnvironmentOnly</code></td><td><code>true</code></td><td>Value indicating whether the Relying Party trusts only keys that are securely generated and stored in a Trusted Execution Environment (Android Key Attestation).</td></tr>
                     <tr><td><code>EnableMetadataService</code></td><td><code>true</code></td><td>Value indicating whether the Relying Party uses the FIDO Metadata Service to verify the attestation object. Metadata from the FIDO Metadata Service is stored in an in-memory cache and remains valid until the <code>nextUpdate</code> timestamp, which is received from the metadata BLOB and indicates the latest time a new metadata BLOB may be provided.</td></tr>
                     <tr><td><code>EnableStrictAuthenticatorVerification</code></td><td><code>false</code></td><td>Value indicating whether the Relying Party requires strict verification of authenticators. If enabled, missing metadata for the authenticator would cause attestation to fail. This parameter is ignored if the FIDO Metadata Service is disabled.</td></tr>
@@ -459,19 +459,19 @@ window.authentication = authentication;
                 3. <b>Add utilities functions</b>
             </p>
             <p>
-                Add <a href="https://github.com/linuxchata/fido2/blob/main/src/Shark.Fido2.Sample/wwwroot/js/utilities.js" target="_blank" class="resource-link">utility functions</a> to convert between Base64URL strings and Uint8Array byte arrays, ensuring proper encoding and decoding for binary data used in web authentication operations.
+                Add <a href="https://github.com/linuxchata/fido2/blob/main/src/Shark.Fido2.Sample/wwwroot/js/utilities.js" target="_blank" class="resource-link external">utility functions</a> to convert between Base64URL strings and Uint8Array byte arrays, ensuring proper encoding and decoding for binary data used in web authentication operations.
             </p>
             <p>
                 4. <b>Add HTML markup</b>
             </p>
             <p>
-                Add the HTML markup to support credential registration and authentication. Refer to the sample <a href="https://github.com/linuxchata/fido2/blob/main/src/Shark.Fido2.Sample/Pages/Index.cshtml" target="_blank" class="resource-link">Index.cshtml</a> file for an example.
+                Add the HTML markup to support credential registration and authentication. Refer to the sample <a href="https://github.com/linuxchata/fido2/blob/main/src/Shark.Fido2.Sample/Pages/Index.cshtml" target="_blank" class="resource-link external">Index.cshtml</a> file for an example.
             </p>
             <p>
                 5. <b>Add JavaScript logic for the site</b>
             </p>
             <p>
-                Add JavaScript logic to connect the HTML markup with credential registration and authentication functionality. Refer to the sample <a href="https://github.com/linuxchata/fido2/blob/main/src/Shark.Fido2.Sample/wwwroot/js/site.js" target="_blank" class="resource-link">site.js</a> file for an example.
+                Add JavaScript logic to connect the HTML markup with credential registration and authentication functionality. Refer to the sample <a href="https://github.com/linuxchata/fido2/blob/main/src/Shark.Fido2.Sample/wwwroot/js/site.js" target="_blank" class="resource-link external">site.js</a> file for an example.
             </p>
             <p>
                 6. <b>Reference JavaScript files</b>
@@ -488,7 +488,7 @@ window.authentication = authentication;
                 7. <b>Run the ASP.NET Core application over HTTPS</b>
             </p>
             <h4 id="browsers-support">Browsers Support</h4>
-            <p>Up-to-date details regarding the Web Authentication API support across modern browsers can be found on <a href="https://caniuse.com/webauthn" target="_blank" class="resource-link">Can I use</a> page.</p>
+            <p>Up-to-date details regarding the Web Authentication API support across modern browsers can be found on <a href="https://caniuse.com/webauthn" target="_blank" class="resource-link external">Can I use</a> page.</p>
         </div>
         <div class="main-description">
             <h3 id="persistent-data-stores">Persistent Data Stores</h3>
@@ -503,7 +503,7 @@ window.authentication = authentication;
                 1. <b>Database Setup</b>
             </p>
             <p>
-                Create the necessary database table by executing the SQL table creation script available at <a href="https://github.com/linuxchata/fido2/blob/main/scripts/sqlserver/sqlserver_table_creation.sql" target="_blank" class="resource-link">SQL Server Table Creation Script</a>.
+                Create the necessary database table by executing the SQL table creation script available at <a href="https://github.com/linuxchata/fido2/blob/main/scripts/sqlserver/sqlserver_table_creation.sql" target="_blank" class="resource-link external">SQL Server Table Creation Script</a>.
             </p>
             <p>
                 2. <b>Installing Package</b>

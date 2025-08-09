@@ -1,4 +1,4 @@
-:root {
+﻿:root {
     /* Colors */
     --color-primary: #6366f1; /* #ec4899 */
     --color-primary-hover: #3367d6;
@@ -231,13 +231,13 @@ input:disabled {
         background-color: var(--color-toc-link-background);
     }
 
-    /* Prevent hover effects on touch devices */
-    @media (hover: none) and (pointer: coarse) {
-        .toc-link:hover {
-            color: var(--color-toc-link-light);
-            background-color: transparent;
-        }
+/* Prevent hover effects on touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .toc-link:hover {
+        color: var(--color-toc-link-light);
+        background-color: transparent;
     }
+}
 
 .form-group {
     margin-bottom: 10px;
@@ -349,6 +349,15 @@ input:disabled {
         text-decoration-color: rgba(37, 99, 235, 1);
     }
 
+    .resource-link.external:after {
+        font-family: "Font Awesome 6 Free";
+        font-size: 60%;
+        font-weight: 900;
+        opacity: .8;
+        vertical-align: super;
+        content: "\00A0\f08e";
+    }
+
 .credential-link {
     color: var(--color-credential);
     text-decoration: none;
@@ -362,29 +371,6 @@ input:disabled {
     .credential-link:hover, .credential-link:focus {
         color: var(--color-link-hover);
         transition: color 0.2s;
-    }
-
-.divider {
-    margin: 20px 0;
-    text-align: center;
-    position: relative;
-}
-
-    .divider::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 0;
-        right: 0;
-        height: 1px;
-        background-color: var(--color-border);
-    }
-
-    .divider span {
-        position: relative;
-        background-color: var(--color-light);
-        padding: 0 10px;
-        color: var(--color-muted);
     }
 
 .table {
