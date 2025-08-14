@@ -10,14 +10,14 @@
         authNotSupportedSection.classList.remove('hide');
     }
 
-    async function handleAsyncAction(button, form, asyncAction, originalText) {
+    async function handleAsyncAction(button, form, asyncAction, originalInnerHtml) {
         Array.from(form.elements).forEach(el => el.disabled = true);
         button.textContent = 'Processing...';
         try {
             await asyncAction();
         } finally {
             Array.from(form.elements).forEach(el => el.disabled = false);
-            button.textContent = originalText;
+            button.innerHTML = originalInnerHtml;
         }
     }
 
@@ -48,7 +48,7 @@
                 this,
                 getById('signupForm'),
                 () => registration(userName, displayName),
-                this.textContent
+                this.innerHTML
             );
         });
     }
@@ -69,7 +69,7 @@
                 this,
                 getById('signinForm'),
                 () => authentication(userName),
-                this.textContent
+                this.innerHTML
             );
 
             toggleCredentialsButtonVisibility();

@@ -91,11 +91,11 @@ async function fetchAssertionResult(credentials) {
 
         if (response.ok) {
             document.getElementById('credentialId').value = credentials.id;
-            notify.info('Authentication was successful', authenticationTitle);
+            notify.info('Sign-in successful', authenticationTitle);
         }
         else {
             const responseBody = await response.json();
-            notify.error(`Authentication has failed. ${responseBody.errorMessage}`, authenticationTitle);
+            notify.error(`Sign-in failed. ${responseBody.errorMessage}`, authenticationTitle);
         }
     } catch (error) {
         notify.error(error.message, authenticationTitle);
