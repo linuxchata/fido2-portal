@@ -2,6 +2,23 @@
 
 const registrationTitle = 'Web Authentication';
 
+async function registration(username, displayName) {
+    const optionsRequest = {
+        username: username,
+        displayName: displayName,
+        attestation: 'direct',
+        authenticatorSelection: {
+            residentKey: 'preferred',
+            userVerification: 'preferred',
+            requireResidentKey: false
+        }
+    };
+
+    const options = await fetchAttestationOptions(optionsRequest);
+
+    await createCredential(options);
+}
+
 async function registrationOfDiscoverableCredential(username, displayName) {
     const optionsRequest = {
         username: username,
@@ -118,4 +135,5 @@ async function fetchAttestationResult(credentials) {
     }
 }
 
+window.registration = registration;
 window.registrationOfDiscoverableCredential = registrationOfDiscoverableCredential;
