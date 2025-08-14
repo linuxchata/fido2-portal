@@ -12,6 +12,14 @@ async function authentication(username) {
     await requestCredential(options);
 }
 
+async function authenticationWithDiscoverableCredential() {
+    const optionsRequest = {};
+
+    const options = await fetchAssertionOptions(optionsRequest);
+
+    await requestCredential(options);
+}
+
 async function requestCredential(options) {
     const credentialRequestOptions = {
         publicKey: {
@@ -95,3 +103,4 @@ async function fetchAssertionResult(credentials) {
 }
 
 window.authentication = authentication;
+window.authenticationWithDiscoverableCredential = authenticationWithDiscoverableCredential;
