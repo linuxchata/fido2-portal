@@ -124,11 +124,11 @@ async function fetchAttestationResult(credentials) {
         });
 
         if (response.ok) {
-            notify.info('Registration was successful', registrationTitle);
+            notify.info('Sign-up successful', registrationTitle);
         }
         else {
             const responseBody = await response.json();
-            notify.error(`Registration has failed. ${responseBody.errorMessage}`, registrationTitle);
+            notify.error(`Sign-up failed. ${responseBody.errorMessage}`, registrationTitle);
         }
     } catch (error) {
         notify.error(error.message, registrationTitle);
