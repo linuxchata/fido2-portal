@@ -1,5 +1,5 @@
 # Overview
-This repository provides a portal for [Shark WebAuthn library for .NET](https://github.com/linuxchata/fido2).
+This repository offers a portal for [Shark WebAuthn library for .NET](https://github.com/linuxchata/fido2).
 
 Shark WebAuthn library for .NET provides a server-side implementation of the WebAuthn standard, enabling secure passwordless and multi-factor authentication (MFA) for web applications. It supports key WebAuthn operations – credential registration and authentication – ensuring compliance with the [WebAuthn Level 2 specification](https://www.w3.org/TR/webauthn-2/) (Web Authentication: An API for accessing Public Key Credentials Level 2).
 
