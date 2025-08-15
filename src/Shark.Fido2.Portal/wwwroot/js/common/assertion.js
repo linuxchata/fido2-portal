@@ -90,8 +90,7 @@ async function fetchAssertionResult(credentials) {
         });
 
         if (response.ok) {
-            document.getElementById('credentialId').value = credentials.id;
-            notify.info('Sign-in successful', authenticationTitle);
+            window.location.href = `/CredentialDetails?credentialId=${encodeURIComponent(credentials.id)}`;
         }
         else {
             const responseBody = await response.json();
