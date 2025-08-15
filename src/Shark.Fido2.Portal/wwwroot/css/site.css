@@ -359,21 +359,6 @@ input:disabled {
         content: "\00A0\f08e";
     }
 
-.credential-link {
-    color: var(--color-credential);
-    text-decoration: none;
-    font-size: var(--font-size-sm);
-    font-weight: 400;
-    line-height: 1.5;
-    letter-spacing: normal;
-    transition: color 0.2s;
-}
-
-    .credential-link:hover, .credential-link:focus {
-        color: var(--color-link-hover);
-        transition: color 0.2s;
-    }
-
 .table {
     max-width: 100%;
     width: auto;
