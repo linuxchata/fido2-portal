@@ -21,15 +21,6 @@
         }
     }
 
-    const credentialIdInput = getById('credentialId');
-    const credentialsLink = getById('credentialsLink');
-
-    function toggleCredentialsButtonVisibility() {
-        if (credentialsLink && credentialIdInput) {
-            credentialsLink.classList.toggle('hide', !credentialIdInput.value);
-        }
-    }
-
     const signUpButton = getById('signUpButton');
 
     if (signUpButton) {
@@ -57,11 +48,6 @@
 
     if (signInButton) {
         signInButton.addEventListener('click', async function () {
-            if (credentialIdInput) {
-                credentialIdInput.value = '';
-                toggleCredentialsButtonVisibility();
-            }
-
             const signInUserNameInput = getById('signInUserName');
             const userName = signInUserNameInput?.value;
 
@@ -73,18 +59,6 @@
             );
 
             toggleCredentialsButtonVisibility();
-        });
-    }
-
-    if (credentialsLink) {
-        credentialsLink.addEventListener('click', () => {
-            if (credentialIdInput) {
-                const credentialId = credentialIdInput?.value;
-
-                if (credentialId) {
-                    window.location.href = `/CredentialDetails?credentialId=${encodeURIComponent(credentialId)}`;
-                }
-            }
         });
     }
 });
