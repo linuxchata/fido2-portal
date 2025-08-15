@@ -57,8 +57,6 @@
                 () => authentication(userName),
                 this.innerHTML
             );
-
-            toggleCredentialsButtonVisibility();
         });
     }
 });

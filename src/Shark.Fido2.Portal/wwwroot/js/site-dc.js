@@ -54,8 +54,6 @@
                 () => authenticationWithDiscoverableCredential(),
                 this.innerHTML
             );
-
-            toggleCredentialsButtonVisibility();
         });
     }
 });
