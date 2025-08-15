@@ -141,7 +141,7 @@ input:disabled {
 
     .main-header h2 {
         font-size: var(--font-size-xxxl);
-        font-weight: bold;
+        font-weight: 600;
         color: var(--color-dark);
     }
 
@@ -164,7 +164,7 @@ input:disabled {
     font-size: var(--font-size-base);
     line-height: 1.6;
     color: var(--color-text);
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
 }
 
     .main-description h3 {
@@ -196,7 +196,12 @@ input:disabled {
     }
 
 .card {
-    border: 0px;
+    background-color: var(--color-light);
+    border: 1px solid var(--color-border);
+}
+
+.card-body {
+    padding: 24px;
 }
 
 .toc-block {
@@ -334,10 +339,6 @@ input:disabled {
     margin-top: 20px;
 }
 
-.button-row-sm {
-    margin-top: 15px;
-}
-
 .resource-link {
     color: var(--color-primary-link);
     text-decoration-line: underline;
@@ -356,21 +357,6 @@ input:disabled {
         opacity: .8;
         vertical-align: super;
         content: "\00A0\f08e";
-    }
-
-.credential-link {
-    color: var(--color-credential);
-    text-decoration: none;
-    font-size: var(--font-size-sm);
-    font-weight: 400;
-    line-height: 1.5;
-    letter-spacing: normal;
-    transition: color 0.2s;
-}
-
-    .credential-link:hover, .credential-link:focus {
-        color: var(--color-link-hover);
-        transition: color 0.2s;
     }
 
 .table {

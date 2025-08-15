@@ -19,7 +19,7 @@
   <!-- Non-discoverable Credentials demonstration - Non-resident keys demonstration -->
   <url>
     <loc>https://shark-fido2.com/NonDiscoverableCredentials</loc>
-    <lastmod>2024-08-14</lastmod>
+    <lastmod>2024-08-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -27,7 +27,7 @@
   <!-- Discoverable Credentials demonstration - Resident keys demonstration -->
   <url>
     <loc>https://shark-fido2.com/DiscoverableCredentials</loc>
-    <lastmod>2024-07-31</lastmod>
+    <lastmod>2024-08-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
