@@ -4,7 +4,6 @@
     --color-lnd-primary-hover: #1d4ed8;
     --color-lnd-primary-light: #dbeafe;
     --color-lnd-primary-dark: #1e40af;
-    --color-lnd-secondary: #10b981;
     --color-lnd-white: #ffffff;
     --color-lnd-light: #f9fafb;
     --color-lnd-lighter: #f8fafc;
@@ -198,7 +197,7 @@
 .check-icon {
     width: var(--font-lnd-size-2xl);
     height: var(--font-lnd-size-2xl);
-    color: var(--color-lnd-secondary);
+    color: var(--color-lnd-primary);
     margin-right: var(--spacing-lnd-md);
     margin-top: var(--spacing-lnd-xs);
     flex-shrink: 0;
