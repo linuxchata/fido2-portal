@@ -30,8 +30,13 @@
             const userName = signUpUserNameInput?.value;
             const displayName = signUpDisplayNameInput?.value;
 
-            if (!userName || !displayName) {
-                notify.error('Please fill in all required fields', 'Validation Error');
+            if (!userName) {
+                notify.error('Please enter a username', 'Validation');
+                return;
+            }
+
+            if (!displayName) {
+                notify.error('Please enter a display name', 'Validation');
                 return;
             }
 
