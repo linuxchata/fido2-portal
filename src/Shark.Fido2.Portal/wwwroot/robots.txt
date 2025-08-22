@@ -20,12 +20,6 @@ Allow: /favicon.ico
 Allow: /favicon.svg
 Allow: /og-image.png
 
-# Disallow configuration and sensitive files
-Disallow: /appsettings.json
-Disallow: /appsettings.Development.json
-Disallow: /appsettings.Production.json
-Disallow: /web.config
-
 # Sitemap location
 Sitemap: https://shark-fido2.com/sitemap.xml
 
