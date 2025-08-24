@@ -46,7 +46,7 @@ jobs:
           name: .net-app
 
       - name: Login to Azure
-        uses: azure/login@v2
+        uses: azure/login@a457da9ea143d694b1b9c7c869ebb04ebe844ef5 #v2.3.0
         with:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_CBD5DFC590D14ACE9202522D37830396 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_8EA585DEEC46442E892613CCEB318067 }}
@@ -54,7 +54,7 @@ jobs:
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
-        uses: azure/webapps-deploy@v3
+        uses: azure/webapps-deploy@122b7ec46017e53a3f71e3a027d67550a1641f5e #v2.2.17
         with:
           app-name: 'app-fido2-dev-05'
           slot-name: 'Production'
