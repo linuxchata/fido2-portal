@@ -1,5 +1,4 @@
 ﻿:root {
-    /* Colors */
     --color-primary: #6366f1; /* #ec4899 */
     --color-primary-hover: #3367d6;
     --color-secondary: #fcd34d;
@@ -24,7 +23,6 @@
     --color-toc-link-light: #6b7280;
     --color-toc-link-dark: #40434c;
     --color-toc-link-background: #eef0f3;
-    /* Typography */
     --font-size-base: 1rem;
     --font-size-mobile: 1.1rem;
     --font-size-xxxl: 2.25rem;
@@ -33,13 +31,9 @@
     --font-size-md: 1.25rem;
     --font-size-sm: 1rem;
     --font-size-xs: 0.9rem;
-    /* Border radius */
     --border-radius: 0.375rem;
     --border-radius-small: 0.1rem;
-    /* Shadows */
     --box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    --box-shadow-btn-hover: 0 2px 4px rgba(0, 0, 0, 0.2);
-    /* Transitions */
     --transition: all 0.3s ease;
 }
 
@@ -287,9 +281,11 @@ input:disabled {
     color: var(--color-light);
 }
 
-    .btn-primary:hover {
+    .btn-primary:hover,
+    .btn-primary:focus {
         background-color: var(--color-primary-hover);
-        box-shadow: var(--box-shadow-btn-hover);
+        outline: none !important;
+        box-shadow: none !important;
     }
 
     .btn-primary:disabled {
@@ -301,16 +297,19 @@ input:disabled {
     color: var(--color-secondary-text);
 }
 
-    .btn-secondary:hover {
+    .btn-secondary:hover,
+    .btn-secondary:focus {
         background-color: var(--color-secondary-hover);
         color: var(--color-secondary-text);
-        box-shadow: var(--box-shadow-btn-hover);
+        outline: none !important;
+        box-shadow: none !important;
     }
 
     .btn-secondary:disabled {
         background-color: var(--color-secondary-hover);
         color: var(--color-secondary-text);
-        box-shadow: var(--box-shadow-btn-hover);
+        outline: none !important;
+        box-shadow: none !important;
         opacity: .45;
     }
 
