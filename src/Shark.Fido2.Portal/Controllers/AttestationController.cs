@@ -18,6 +18,8 @@ namespace Shark.Fido2.Portal.Controllers;
 [TypeFilter(typeof(RestApiExceptionFilter))]
 public class AttestationController(IAttestation attestation, ILogger<AssertionController> logger) : ControllerBase
 {
+    private const string SessionName = "WebAuthn.CreateOptions";
+
     private readonly IAttestation _attestation = attestation;
 
     /// <summary>
@@ -31,11 +33,16 @@ public class AttestationController(IAttestation attestation, ILogger<AssertionCo
         ServerPublicKeyCredentialCreationOptionsRequest request,
         CancellationToken cancellationToken)
     {
+        if (request == null)
+        {
+            return BadRequest(ServerResponse.CreateFailed());
+        }
+
         var createOptions = await _attestation.BeginRegistration(request.Map(), cancellationToken);
 
         var response = createOptions.Map();
 
-        HttpContext.Session.SetString("CreateOptions", JsonSerializer.Serialize(createOptions));
+        HttpContext.Session.SetString(SessionName, JsonSerializer.Serialize(createOptions));
 
         return Ok(response);
     }
@@ -56,11 +63,18 @@ public class AttestationController(IAttestation attestation, ILogger<AssertionCo
             return BadRequest(ServerResponse.CreateFailed());
         }
 
-        var createOptionsString = HttpContext.Session.GetString("CreateOptions");
+        var createOptionsString = HttpContext.Session.GetString(SessionName);
+
+        if (string.IsNullOrWhiteSpace(createOptionsString))
+        {
+            return BadRequest(ServerResponse.CreateFailed());
+        }
 
         var createOptions = JsonSerializer.Deserialize<PublicKeyCredentialCreationOptions>(createOptionsString!);
 
         var response = await _attestation.CompleteRegistration(request.Map(), createOptions!, cancellationToken);
+
+        HttpContext.Session.Remove(SessionName);
 
         if (response.IsValid)
         {

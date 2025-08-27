@@ -94,7 +94,8 @@ async function fetchAssertionResult(credentials) {
         }
         else {
             const responseBody = await response.json();
-            notify.error(`Sign-in failed. ${responseBody.errorMessage}`, authenticationTitle);
+            const errorMessage = `Sign-in failed${responseBody.errorMessage ? `. ${responseBody.errorMessage}` : ''}`;
+            notify.error(errorMessage, registrationTitle);
         }
     } catch (error) {
         notify.error(error.message, authenticationTitle);

@@ -128,7 +128,8 @@ async function fetchAttestationResult(credentials) {
         }
         else {
             const responseBody = await response.json();
-            notify.error(`Sign-up failed. ${responseBody.errorMessage}`, registrationTitle);
+            const errorMessage = `Sign-up failed${responseBody.errorMessage ? `. ${responseBody.errorMessage}` : ''}`;
+            notify.error(errorMessage, registrationTitle);
         }
     } catch (error) {
         notify.error(error.message, registrationTitle);
