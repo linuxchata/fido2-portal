@@ -83,9 +83,9 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.UseSession();
+
 app.MapRazorPages();
 app.MapControllers();
-
-app.UseSession();
 
 await app.RunAsync();
