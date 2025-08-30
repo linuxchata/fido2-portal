@@ -173,7 +173,7 @@
 /* Supported Features Section */
 .supported-features {
     padding: var(--spacing-lnd-5xl) 0;
-    background: linear-gradient( to right, #f9fafb 0%, #ffffff 20%, #ffffff 80%, #f9fafb 100% );
+    background: linear-gradient(to right, #ffffff 0%, var(--color-lnd-light) 10%, var(--color-lnd-light) 90%, #ffffff 100%);
 }
 
 .features-list {
@@ -186,7 +186,7 @@
         display: flex;
         align-items: flex-start;
         margin-bottom: var(--spacing-lnd-base);
-        padding: var(--spacing-lnd-base);
+        padding: var(--spacing-lnd-lg);
         background: var(--color-lnd-white);
         border-radius: var(--border-lnd-radius-md);
         box-shadow: var(--shadow-lnd-sm);
@@ -292,6 +292,7 @@
 .getting-started {
     padding: var(--spacing-lnd-5xl) 0;
     background: var(--color-lnd-lightest);
+    background: linear-gradient(to right, #ffffff 0%, var(--color-lnd-lightest) 20%, var(--color-lnd-lightest) 80%, #ffffff 100%);
 }
 
     .getting-started p {
