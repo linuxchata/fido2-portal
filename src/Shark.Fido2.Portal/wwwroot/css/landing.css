@@ -32,7 +32,7 @@
     --font-lnd-size-xs: 0.75rem;
     --font-lnd-size-sm: 0.875rem;
     --font-lnd-size-base: 1rem;
-    --font-lnd-size-lg: 1.125rem;
+    --font-lnd-size-lg: 1.1rem;
     --font-lnd-size-xl: 1.25rem;
     --font-lnd-size-2xl: 1.5rem;
     --font-lnd-size-3xl: 2.25rem;
@@ -125,7 +125,6 @@
 
     .hero h1 {
         font-size: var(--font-lnd-size-4xl);
-        font-weight: bold;
         color: var(--color-lnd-gray-900);
         margin-bottom: var(--spacing-lnd-2xl);
         line-height: 1.1;
@@ -162,7 +161,6 @@
 
     .section-header h2 {
         font-size: var(--font-lnd-size-3xl);
-        font-weight: bold;
         color: var(--color-lnd-gray-900);
         margin-bottom: var(--spacing-lnd-base);
     }
@@ -301,7 +299,7 @@
         font-size: var(--font-lnd-size-lg);
         color: var(--color-lnd-text-dark);
         max-width: var(--container-lnd-max-width-text-lg);
-        margin: 0 auto var(--spacing-lnd-2xl);
+        margin: 0 auto var(--spacing-lnd-xl);
         line-height: 1.55;
     }
 
@@ -374,6 +372,14 @@
         .section-header h2 {
             font-size: var(--font-lnd-size-mobile-xl);
         }
+
+    .supported-features,
+    .getting-started,
+    .cta {
+        /* Cancel padding from parrent container */
+        margin-left: -0.75rem;
+        margin-right: -0.75rem;
+    }
 
     .reduced-padding {
         padding: 0 var(--spacing-lnd-base);
