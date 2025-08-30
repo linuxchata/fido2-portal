@@ -77,7 +77,7 @@ dotnet add package Shark.Fido2.InMemory
     "MetadataServiceConfiguration": {
       "MetadataBlobLocation": "https://mds3.fidoalliance.org/",
       "RootCertificateLocationUrl": "https://secure.globalsign.com/cacert/root-r3.crt",
-      "MaximumTokenSizeInBytes": 6291456
+      "MaximumTokenSizeInBytes": 8388608
     }
   }
 }
@@ -126,7 +126,7 @@ dotnet add package Shark.Fido2.InMemory
                 <tbody>
                     <tr><td><code>MetadataBlobLocation</code></td><td><code>https://mds3.fidoalliance.org/</code></td><td>Location of the centralized and trusted source of information about FIDO authenticators (Metadata Service BLOB).</td></tr>
                     <tr><td><code>RootCertificateLocationUrl</code></td><td><code>https://secure.globalsign.com/cacert/root-r3.crt</code></td><td>Location of GlobalSign Root R3 for Metadata Service BLOB.</td></tr>
-                    <tr><td><code>MaximumTokenSizeInBytes</code></td><td><code>6291456</code></td><td>Maximum token size in bytes that will be processed. This configuration is related to the Metadata Service BLOB size.</td></tr>
+                    <tr><td><code>MaximumTokenSizeInBytes</code></td><td><code>8388608</code></td><td>Maximum token size in bytes that will be processed. This configuration is related to the Metadata Service BLOB size.</td></tr>
                 </tbody>
             </table>
             <h4 id="configuration-usage">Configuration Usage</h4>
