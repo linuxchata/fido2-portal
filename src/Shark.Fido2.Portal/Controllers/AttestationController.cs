@@ -16,7 +16,7 @@ namespace Shark.Fido2.Portal.Controllers;
 [Route("[controller]")]
 [ApiController]
 [TypeFilter(typeof(RestApiExceptionFilter))]
-public class AttestationController(IAttestation attestation, ILogger<AssertionController> logger) : ControllerBase
+public class AttestationController(IAttestation attestation, ILogger<AttestationController> logger) : ControllerBase
 {
     private const string SessionName = "WebAuthn.CreateOptions";
 

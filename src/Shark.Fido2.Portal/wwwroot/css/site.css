@@ -1,5 +1,5 @@
 ﻿:root {
-    --color-primary: #6366f1; /* #ec4899 */
+    --color-primary: #6366f1;
     --color-primary-hover: #3367d6;
     --color-secondary: #fcd34d;
     --color-secondary-hover: #fbbd24;
@@ -14,8 +14,6 @@
     --color-secondary-text: #1f2937;
     --color-link: #374151;
     --color-link-hover: #444;
-    --color-credential: #888;
-    --color-pre-code: #f0f0f0;
     --color-footer-bg: #111827;
     --color-footer-text: #fff;
     --color-disclaimer: #6b7280;
@@ -33,7 +31,6 @@
     --font-size-xs: 0.9rem;
     --border-radius: 0.375rem;
     --border-radius-small: 0.1rem;
-    --box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
 }
 
