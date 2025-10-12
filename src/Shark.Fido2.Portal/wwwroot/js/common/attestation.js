@@ -69,6 +69,7 @@ async function createCredential(options) {
         attestation = await navigator.credentials.create(credentialCreationOptions);
     }
     catch (error) {
+        console.error(error.message);
         if (error.name === 'InvalidStateError') {
             notify.error('The authenticator was not allowed because it was already registered.', registrationTitle);
         }
@@ -109,6 +110,7 @@ async function fetchAttestationOptions(optionsRequest) {
             notify.error("Error creating registration options", registrationTitle);
         }
     } catch (error) {
+        console.error(error.message);
         notify.error(error.message, registrationTitle);
     }
 }
@@ -129,9 +131,11 @@ async function fetchAttestationResult(credentials) {
         else {
             const responseBody = await response.json();
             const errorMessage = `Sign-up failed${responseBody.errorMessage ? `. ${responseBody.errorMessage}` : ''}`;
+            console.error(errorMessage);
             notify.error(errorMessage, registrationTitle);
         }
     } catch (error) {
+        console.error(error.message);
         notify.error(error.message, registrationTitle);
     }
 }
