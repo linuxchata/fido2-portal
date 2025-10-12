@@ -39,6 +39,7 @@ async function requestCredential(options) {
         assertion = await navigator.credentials.get(credentialRequestOptions);
     }
     catch (error) {
+        console.error(error.message);
         notify.error(error.message, authenticationTitle);
         return;
     }
@@ -75,6 +76,7 @@ async function fetchAssertionOptions(optionsRequest) {
             notify.error("Error creating authentication options", authenticationTitle);
         }
     } catch (error) {
+        console.error(error.message);
         notify.error(error.message, authenticationTitle);
     }
 }
@@ -95,9 +97,11 @@ async function fetchAssertionResult(credentials) {
         else {
             const responseBody = await response.json();
             const errorMessage = `Sign-in failed${responseBody.errorMessage ? `. ${responseBody.errorMessage}` : ''}`;
+            console.error(errorMessage);
             notify.error(errorMessage, registrationTitle);
         }
     } catch (error) {
+        console.error(error.message);
         notify.error(error.message, authenticationTitle);
     }
 }
