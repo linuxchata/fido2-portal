@@ -455,6 +455,7 @@ window.authentication = authentication;
             <p>
                 This JavaScript code bridges the browser's Web Authentication API with the server-side REST API endpoints provided by the ASP.NET Core controllers described above.
             </p>
+            <p>Please note that the new static methods <a href="https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential/parseCreationOptionsFromJSON_static" target="_blank" class="resource-link external">PublicKeyCredential.parseCreationOptionsFromJSON()</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential/parseRequestOptionsFromJSON_static" target="_blank" class="resource-link external">PublicKeyCredential.parseRequestOptionsFromJSON()</a>, and the instance method <a href="https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential/toJSON" target="_blank" class="resource-link external">toJSON()</a> can be used to parse options received from the server or serialize credentials. Using these methods simplifies handling of the data exchanged with the server, so in this case, the utilities functions for conversions described below are not needed.</p>
             <p>
                 3. <b>Add utilities functions</b>
             </p>
