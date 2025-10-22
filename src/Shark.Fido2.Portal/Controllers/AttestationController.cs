@@ -40,11 +40,9 @@ public class AttestationController(IAttestation attestation, ILogger<Attestation
 
         var createOptions = await _attestation.BeginRegistration(request.Map(), cancellationToken);
 
-        var response = createOptions.Map();
-
         HttpContext.Session.SetString(SessionName, JsonSerializer.Serialize(createOptions));
 
-        return Ok(response);
+        return Ok(createOptions.Map());
     }
 
     /// <summary>
@@ -64,7 +62,6 @@ public class AttestationController(IAttestation attestation, ILogger<Attestation
         }
 
         var createOptionsString = HttpContext.Session.GetString(SessionName);
-
         if (string.IsNullOrWhiteSpace(createOptionsString))
         {
             return BadRequest(ServerResponse.CreateFailed());

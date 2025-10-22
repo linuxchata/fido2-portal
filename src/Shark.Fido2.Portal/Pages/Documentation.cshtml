@@ -206,9 +206,8 @@ public class AttestationController : ControllerBase
 public async Task&lt;IActionResult&gt; Options(ServerPublicKeyCredentialCreationOptionsRequest request, CancellationToken cancellationToken)
 {
     var createOptions = await _attestation.BeginRegistration(request.Map(), cancellationToken);
-    var response = createOptions.Map();
     HttpContext.Session.SetString("CreateOptions", JsonSerializer.Serialize(createOptions));
-    return Ok(response);
+    return Ok(createOptions.Map());
 }
 </code></pre>
             <p>
@@ -249,9 +248,8 @@ public class AssertionController : ControllerBase
 public async Task&lt;IActionResult&gt; Options(ServerPublicKeyCredentialGetOptionsRequest request, CancellationToken cancellationToken)
 {
     var requestOptions = await _assertion.BeginAuthentication(request.Map(), cancellationToken);
-    var response = requestOptions.Map();
     HttpContext.Session.SetString("RequestOptions", JsonSerializer.Serialize(requestOptions));
-    return Ok(response);
+    return Ok(requestOptions.Map());
 }
 </code></pre>
             <p>
