@@ -535,6 +535,48 @@ builder.Services.AddFido2SqlServer();
   }
 }
 </code></pre>
+
+            <h4 id="sql-server">PostgreSQL</h4>
+            <p>
+                To use PostgreSQL as your credential store, follow these steps:
+            </p>
+            <p>
+                1. <b>Database Setup</b>
+            </p>
+            <p>
+                Create the necessary database table by executing the SQL table creation script available at <a href="https://github.com/linuxchata/fido2/blob/main/scripts/postgresql/postgresql_table_creation.sql" target="_blank" class="resource-link external">PostgreSQL Table Creation Script</a>.
+            </p>
+            <p>
+                2. <b>Installing Package</b>
+            </p>
+            <p>Add the following NuGet packages to your project:</p>
+            <pre class="code"><code class="language-bash">dotnet add package Shark.Fido2.PostgreSql
+</code></pre>
+            <p>
+                3. <b>Registering Dependencies</b>
+            </p>
+            <p>
+                Replace the in-memory store registration with PostgreSQL in your <code>Program.cs</code>:
+            </p>
+            <pre class="code"><code class="language-csharp">var builder = WebApplication.CreateBuilder(args);
+
+// Other service registrations
+
+builder.Services.AddFido2(builder.Configuration);
+builder.Services.AddFido2PostgreSql();
+</code></pre>
+            <p>
+                4. <b>Configuration</b>
+            </p>
+            <p>
+                Add the connection string to your <code>appsettings.json</code> or environment-specific configuration file:
+            </p>
+            <pre class="code"><code class="language-json">{
+  "ConnectionStrings": {
+    "DefaultConnection": "Host=POSTGRESQL_INSTANCE;Port=5432;Database=DATABASE_NAME;OTHER_PARAMETERS;"
+  }
+}
+</code></pre>
             <h4 id="amazon-dynamodb">Amazon DynamoDB</h4>
             <p>
                 To use Amazon DynamoDB as your credential store, follow these steps:
