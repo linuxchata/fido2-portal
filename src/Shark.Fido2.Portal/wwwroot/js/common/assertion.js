@@ -72,16 +72,15 @@ async function requestCredentialForConditionalMediation(options) {
         publicKey: {
             rpId: options.rpId,
             challenge: toUint8Array(options.challenge),
+            allowCredentials: [],
             timeout: options.timeout
         },
+        mediation: "conditional",
     };
 
     let assertion;
     try {
-        assertion = await navigator.credentials.get({
-            publicKey: credentialRequestOptions.publicKey,
-            mediation: "conditional",
-        });
+        assertion = await navigator.credentials.get(credentialRequestOptions);
     }
     catch (error) {
         console.error(error.message);

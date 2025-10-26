@@ -4,11 +4,11 @@
     if (await isConditionalMediationSupported()) {
         const authSection = getById('auth-dc-section');
         authSection.classList.remove('hide');
+
+        await authenticationWithConditionalMediation();
     }
     else {
         const authNotSupportedSection = getById('auth-cui-notsupported-section');
         authNotSupportedSection.classList.remove('hide');
     }
-
-    await authenticationWithConditionalMediation();
 });
