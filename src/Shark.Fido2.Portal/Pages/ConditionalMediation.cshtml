@@ -1,0 +1,49 @@
+﻿@page
+@model ConditionalMediationModel
+
+<div class="main-container">
+    <div class="main-section">
+        <div class="main-header">
+            <h2>Conditional UI</h2>
+        </div>
+        <div class="main-description">
+            <p>Conditional UI is a browser feature that allows passkey sign-in prompts to appear automatically when a user focuses on a username or email field. It streamlines the login experience by letting users choose a passkey directly from their device's native interface, making passwordless sign-ins faster and more intuitive.</p>
+        </div>
+    </div>
+
+    <div id="auth-dc-section" class="inner-container hide">
+        <div class="inner-container-wrapper">
+            <!-- Sign In Section -->
+            <div class="auth-section signin-section">
+                <div class="auth-header">
+                    <h3>Sign In</h3>
+                </div>
+                <form id="signinForm">
+                    <div class="form-group">
+                        <label for="signInUserName">Username</label>
+                        <input type="text"
+                               id="signInUserName"
+                               name="username"
+                               maxlength="64"
+                               placeholder="Enter your username"
+                               required
+                               autocomplete="username webauthn"
+                               class="form-control">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="auth-cui-notsupported-section" class="inner-container hide">
+        <div class="auth-section signup-section">
+            This version of your browser does not support conditional UI.
+        </div>
+    </div>
+</div>
+
+<environment include="Development">
+    <script src="~/js/site-cm.js"></script>
+</environment>
+<environment exclude="Development">
+    <script src="~/js/site-cm.min.js"></script>
+</environment>

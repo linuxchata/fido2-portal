@@ -20,6 +20,14 @@ async function authenticationWithDiscoverableCredential() {
     await requestCredential(options);
 }
 
+async function authenticationWithConditionalMediation() {
+    const optionsRequest = {};
+
+    const options = await fetchAssertionOptions(optionsRequest);
+
+    await requestCredentialForConditionalMediation(options);
+}
+
 async function requestCredential(options) {
     const credentialRequestOptions = {
         publicKey: {
@@ -37,6 +45,43 @@ async function requestCredential(options) {
     let assertion;
     try {
         assertion = await navigator.credentials.get(credentialRequestOptions);
+    }
+    catch (error) {
+        console.error(error.message);
+        notify.error(error.message, authenticationTitle);
+        return;
+    }
+
+    const credentials = {
+        id: assertion.id,
+        rawId: toBase64Url(assertion.rawId),
+        response: {
+            authenticatorData: toBase64Url(assertion.response.authenticatorData),
+            clientDataJson: toBase64Url(assertion.response.clientDataJSON),
+            signature: toBase64Url(assertion.response.signature),
+            userHandle: toBase64Url(assertion.response.userHandle),
+        },
+        type: assertion.type,
+    };
+
+    await fetchAssertionResult(credentials);
+}
+
+async function requestCredentialForConditionalMediation(options) {
+    const credentialRequestOptions = {
+        publicKey: {
+            rpId: options.rpId,
+            challenge: toUint8Array(options.challenge),
+            timeout: options.timeout
+        },
+    };
+
+    let assertion;
+    try {
+        assertion = await navigator.credentials.get({
+            publicKey: credentialRequestOptions.publicKey,
+            mediation: "conditional",
+        });
     }
     catch (error) {
         console.error(error.message);
@@ -108,3 +153,4 @@ async function fetchAssertionResult(credentials) {
 
 window.authentication = authentication;
 window.authenticationWithDiscoverableCredential = authenticationWithDiscoverableCredential;
+window.authenticationWithConditionalMediation = authenticationWithConditionalMediation;

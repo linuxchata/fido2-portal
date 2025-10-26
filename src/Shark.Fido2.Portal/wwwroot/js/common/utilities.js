@@ -40,4 +40,10 @@ function isWebAuthnSupported() {
     return window.PublicKeyCredential != null;
 }
 
+async function isConditionalMediationSupported() {
+    return window.PublicKeyCredential != null && window.PublicKeyCredential.isConditionalMediationAvailable
+        && await PublicKeyCredential.isConditionalMediationAvailable();
+}
+
 window.isWebAuthnSupported = isWebAuthnSupported;
+window.isConditionalMediationSupported = isConditionalMediationSupported;
