@@ -2,11 +2,11 @@
     const getById = (id) => document.getElementById(id);
 
     if (await isConditionalMediationSupported()) {
-        const webAuthnSection = getById('auth-dc-section');
+        const webAuthnSection = getById('webauthn-cui-section');
         webAuthnSection.classList.remove('hide');
     }
     else {
-        const webAuthnNotSupportedSection = getById('auth-cui-notsupported-section');
+        const webAuthnNotSupportedSection = getById('webauthn-cui-notsupported-section');
         webAuthnNotSupportedSection.classList.remove('hide');
         return;
     }

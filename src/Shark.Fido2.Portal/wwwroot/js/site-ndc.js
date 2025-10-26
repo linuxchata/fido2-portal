@@ -2,11 +2,11 @@
     const getById = (id) => document.getElementById(id);
 
     if (isWebAuthnSupported()) {
-        const webAuthnSection = getById('auth-ndc-section');
+        const webAuthnSection = getById('webauthn-ndc-section');
         webAuthnSection.classList.remove('hide');
     }
     else {
-        const webAuthnNotSupportedSection = getById('auth-ndc-notsupported-section');
+        const webAuthnNotSupportedSection = getById('webauthn-ndc-notsupported-section');
         webAuthnNotSupportedSection.classList.remove('hide');
     }
 
