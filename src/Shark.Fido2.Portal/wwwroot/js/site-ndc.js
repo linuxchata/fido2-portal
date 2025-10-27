@@ -2,12 +2,12 @@
     const getById = (id) => document.getElementById(id);
 
     if (isWebAuthnSupported()) {
-        const authSection = getById('auth-ndc-section');
-        authSection.classList.remove('hide');
+        const webAuthnSection = getById('webauthn-ndc-section');
+        webAuthnSection.classList.remove('hide');
     }
     else {
-        const authNotSupportedSection = getById('auth-ndc-notsupported-section');
-        authNotSupportedSection.classList.remove('hide');
+        const webAuthnNotSupportedSection = getById('webauthn-ndc-notsupported-section');
+        webAuthnNotSupportedSection.classList.remove('hide');
     }
 
     async function handleAsyncAction(button, form, asyncAction, originalInnerHtml) {

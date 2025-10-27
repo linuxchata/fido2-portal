@@ -1,5 +1,5 @@
 # Robots.txt for Shark.Fido2.Portal
-# WebAuthn Demonstration Portal
+# Shark WebAuthn Demonstration Portal
 
 User-agent: *
 
@@ -8,6 +8,7 @@ Allow: /
 Allow: /Documentation
 Allow: /DiscoverableCredentials
 Allow: /NonDiscoverableCredentials
+Allow: /ConditionalMediation
 
 # Disallow crawling of protected pages
 Disallow: /CredentialDetails

@@ -100,6 +100,11 @@ input:disabled {
     flex: 1;
 }
 
+.inner-container-half {
+    width: 50%;
+    margin: 0 auto;
+}
+
 .main-section {
     flex: 1;
     display: flex;
@@ -458,6 +463,11 @@ pre.code {
     .inner-container-wrapper {
         flex-direction: column;
         gap: 10px;
+    }
+
+    .inner-container-half {
+        width: 100%;
+        margin: 0 auto;
     }
 
     .table {

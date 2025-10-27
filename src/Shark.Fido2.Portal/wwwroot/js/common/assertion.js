@@ -2,6 +2,8 @@
 
 const authenticationTitle = 'Web Authentication';
 
+let currentAbortController = null;
+
 async function authentication(username) {
     const optionsRequest = {
         username: username
@@ -20,7 +22,17 @@ async function authenticationWithDiscoverableCredential() {
     await requestCredential(options);
 }
 
+async function authenticationWithConditionalMediation() {
+    const optionsRequest = {};
+
+    const options = await fetchAssertionOptions(optionsRequest);
+
+    await requestCredentialForConditionalMediation(options);
+}
+
 async function requestCredential(options) {
+    cancelConditionalMediation();
+
     const credentialRequestOptions = {
         publicKey: {
             rpId: options.rpId,
@@ -43,6 +55,57 @@ async function requestCredential(options) {
         notify.error(error.message, authenticationTitle);
         return;
     }
+
+    const credentials = {
+        id: assertion.id,
+        rawId: toBase64Url(assertion.rawId),
+        response: {
+            authenticatorData: toBase64Url(assertion.response.authenticatorData),
+            clientDataJson: toBase64Url(assertion.response.clientDataJSON),
+            signature: toBase64Url(assertion.response.signature),
+            userHandle: toBase64Url(assertion.response.userHandle),
+        },
+        type: assertion.type,
+    };
+
+    await fetchAssertionResult(credentials);
+}
+
+async function requestCredentialForConditionalMediation(options) {
+    cancelConditionalMediation()
+
+    const controller = new AbortController();
+    currentAbortController = controller;
+
+    const credentialRequestOptions = {
+        publicKey: {
+            rpId: options.rpId,
+            challenge: toUint8Array(options.challenge),
+            allowCredentials: [],
+            timeout: options.timeout
+        },
+        mediation: 'conditional',
+        signal: controller.signal
+    };
+
+    let assertion;
+    try {
+        assertion = await navigator.credentials.get(credentialRequestOptions);
+    }
+    catch (error) {
+        currentAbortController = null;
+
+        if (error.name === 'AbortError') {
+            console.warn(error.message);
+            return;
+        }
+
+        console.error(error.message);
+        notify.error(error.message, authenticationTitle);
+        return;
+    }
+
+    currentAbortController = null;
 
     const credentials = {
         id: assertion.id,
@@ -105,6 +168,13 @@ async function fetchAssertionResult(credentials) {
         notify.error(error.message, authenticationTitle);
     }
 }
+function cancelConditionalMediation() {
+    if (currentAbortController) {
+        currentAbortController.abort({ name: 'AbortError', message: 'Conditional mediation was aborted' });
+        currentAbortController = null;
+    }
+}
 
 window.authentication = authentication;
 window.authenticationWithDiscoverableCredential = authenticationWithDiscoverableCredential;
+window.authenticationWithConditionalMediation = authenticationWithConditionalMediation;
