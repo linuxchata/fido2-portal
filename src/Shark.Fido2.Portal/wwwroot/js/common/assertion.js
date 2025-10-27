@@ -2,6 +2,8 @@
 
 const authenticationTitle = 'Web Authentication';
 
+let currentAbortController = null;
+
 async function authentication(username) {
     const optionsRequest = {
         username: username
@@ -29,6 +31,8 @@ async function authenticationWithConditionalMediation() {
 }
 
 async function requestCredential(options) {
+    cancelConditionalMediation();
+
     const credentialRequestOptions = {
         publicKey: {
             rpId: options.rpId,
@@ -68,6 +72,11 @@ async function requestCredential(options) {
 }
 
 async function requestCredentialForConditionalMediation(options) {
+    cancelConditionalMediation()
+
+    const controller = new AbortController();
+    currentAbortController = controller;
+
     const credentialRequestOptions = {
         publicKey: {
             rpId: options.rpId,
@@ -75,7 +84,8 @@ async function requestCredentialForConditionalMediation(options) {
             allowCredentials: [],
             timeout: options.timeout
         },
-        mediation: "conditional",
+        mediation: 'conditional',
+        signal: controller.signal
     };
 
     let assertion;
@@ -83,10 +93,19 @@ async function requestCredentialForConditionalMediation(options) {
         assertion = await navigator.credentials.get(credentialRequestOptions);
     }
     catch (error) {
+        currentAbortController = null;
+
+        if (error.name === 'AbortError') {
+            console.warn(error.message);
+            return;
+        }
+
         console.error(error.message);
         notify.error(error.message, authenticationTitle);
         return;
     }
+
+    currentAbortController = null;
 
     const credentials = {
         id: assertion.id,
@@ -147,6 +166,12 @@ async function fetchAssertionResult(credentials) {
     } catch (error) {
         console.error(error.message);
         notify.error(error.message, authenticationTitle);
+    }
+}
+function cancelConditionalMediation() {
+    if (currentAbortController) {
+        currentAbortController.abort({ name: 'AbortError', message: 'Conditional mediation was aborted' });
+        currentAbortController = null;
     }
 }
 
