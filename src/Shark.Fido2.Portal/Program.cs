@@ -2,6 +2,7 @@ using Shark.Fido2.Core;
 using Shark.Fido2.Core.Abstractions;
 using Shark.Fido2.InMemory;
 using Shark.Fido2.Portal;
+using Shark.Fido2.Portal.Middleware;
 using Shark.Fido2.Portal.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -64,16 +65,7 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Error");
     app.UseHsts();
 
-    app.Use(async (context, next) =>
-    {
-        context.Response.Headers.Append("X-Frame-Options", "DENY");
-        context.Response.Headers.Append("Content-Security-Policy", "default-src 'self'; img-src 'self' data:; form-action 'self'; frame-ancestors 'none';");
-        context.Response.Headers.Append("X-Content-Type-Options", "nosniff");
-        context.Response.Headers.Append("Permissions-Policy", "geolocation=(), microphone=(), camera=()");
-        context.Response.Headers.Append("Referrer-Policy", "no-referrer");
-
-        await next();
-    });
+    app.UseMiddleware<SecurityHeadersMiddleware>();
 }
 
 app.UseHttpsRedirection();
