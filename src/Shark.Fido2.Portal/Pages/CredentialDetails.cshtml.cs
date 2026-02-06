@@ -6,6 +6,7 @@ using Shark.Fido2.Portal.Services;
 
 namespace Shark.Fido2.Portal.Pages;
 
+[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 public class CredentialsDetailsModel : PageModel
 {
     private const string DateTimeFormat = "yyyy-MM-dd HH:mm:ss";
