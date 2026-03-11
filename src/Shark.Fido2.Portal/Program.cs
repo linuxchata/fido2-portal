@@ -36,7 +36,10 @@ builder.Services.AddWebOptimizer(pipeline =>
 builder.Services.AddRazorPages();
 builder.Services.AddControllers();
 
-builder.Services.AddApplicationInsightsTelemetry();
+if (builder.Environment.IsProduction())
+{
+    builder.Services.AddApplicationInsightsTelemetry();
+}
 
 builder.Services.AddSession(options =>
 {
