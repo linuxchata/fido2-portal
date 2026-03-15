@@ -1,4 +1,4 @@
-@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@inject IHttpContextAccessor HttpContextAccessor
 
 <!DOCTYPE html>
 <html lang="en">
@@ -102,7 +102,7 @@
     </environment>
     <environment exclude="Development">
         <script src="~/js/common.min.js"></script>
-        <script src="~/js/gtm.js"></script>
+        <script src="~/js/gtm.min.js"></script>
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-3C7WCLK2W4"></script>
     </environment>
