@@ -1,4 +1,4 @@
-﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,14 +38,6 @@
         <link rel="stylesheet" href="~/css/site.min.css" />
         <link rel="stylesheet" href="~/css/landing.min.css" />
     </environment>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3C7WCLK2W4"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-3C7WCLK2W4');
-    </script>
 </head>
 <body>
     <header>
@@ -110,6 +102,9 @@
     </environment>
     <environment exclude="Development">
         <script src="~/js/common.min.js"></script>
+        <script src="~/js/gtm.js"></script>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-3C7WCLK2W4"></script>
     </environment>
 
     @await RenderSectionAsync("Scripts", required: false)
