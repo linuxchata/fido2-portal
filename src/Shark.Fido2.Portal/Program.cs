@@ -30,6 +30,7 @@ builder.Services.AddWebOptimizer(pipeline =>
     pipeline.AddJavaScriptBundle("/js/site-dc.min.js", "js/site-dc.js").MinifyJavaScript();
     pipeline.AddJavaScriptBundle("/js/site-ndc.min.js", "js/site-ndc.js").MinifyJavaScript();
     pipeline.AddJavaScriptBundle("/js/site-cm.min.js", "js/site-cm.js").MinifyJavaScript();
+    pipeline.AddJavaScriptBundle("/js/gtm.min.js", "js/gtm.js").MinifyJavaScript();
     pipeline.AddJavaScriptBundle("/js/common.min.js", "js/common/*.js").MinifyJavaScript();
 });
 
