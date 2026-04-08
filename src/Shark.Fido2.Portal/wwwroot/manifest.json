@@ -1,0 +1,22 @@
+{
+  "name": "Shark WebAuthn .NET Library",
+  "short_name": "Shark WebAuthn",
+  "description": "Secure, passwordless login and MFA for modern web applications.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f8fa",
+  "theme_color": "#6366f1",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}
