@@ -1,4 +1,4 @@
-﻿:root {
+:root {
     --color-primary: #6366f1;
     --color-primary-hover: #3367d6;
     --color-secondary: #fcd34d;
@@ -481,4 +481,10 @@ pre.code {
     .toc-block ul li {
         margin-bottom: 4px;
     }
+}
+
+.email-rtl {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    display: inline-block;
 }

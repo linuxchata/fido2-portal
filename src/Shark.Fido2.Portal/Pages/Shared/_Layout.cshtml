@@ -84,7 +84,12 @@
 
     <footer class="footer">
         <p>&copy; 2024-2026 Shark WebAuthn .NET library</p>
-        <p>FIDO&reg; and FIDO2&reg; are trademarks of FIDO Alliance, Inc.</p>
+        <p class="mt-2">
+            <a asp-page="/PrivacyPolicy" class="text-white text-decoration-none mx-2">Privacy Policy</a>
+            <span class="text-white-50">|</span>
+            <a asp-page="/TermsOfService" class="text-white text-decoration-none mx-2">Terms of Service</a>
+        </p>
+        <p class="mt-2">FIDO&reg; and FIDO2&reg; are trademarks of FIDO Alliance, Inc.</p>
     </footer>
 
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

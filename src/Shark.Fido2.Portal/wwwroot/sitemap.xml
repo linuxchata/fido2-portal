@@ -40,4 +40,20 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Privacy Policy page -->
+  <url>
+    <loc>https://shark-fido2.com/PrivacyPolicy</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Terms of Service page -->
+  <url>
+    <loc>https://shark-fido2.com/TermsOfService</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
 </urlset>

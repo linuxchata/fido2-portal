@@ -9,6 +9,8 @@ Allow: /Documentation
 Allow: /DiscoverableCredentials
 Allow: /NonDiscoverableCredentials
 Allow: /ConditionalMediation
+Allow: /PrivacyPolicy
+Allow: /TermsOfService
 
 # Disallow crawling of protected pages
 Disallow: /CredentialDetails
