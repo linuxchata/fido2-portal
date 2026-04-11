@@ -352,7 +352,7 @@ input:disabled {
     }
 
     .resource-link.external:after {
-        font-family: "Font Awesome 6 Free";
+        font-family: "Font Awesome 7 Free";
         font-size: 60%;
         font-weight: 900;
         opacity: .8;
