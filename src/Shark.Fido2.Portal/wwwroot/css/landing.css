@@ -1,4 +1,4 @@
-﻿:root {
+:root {
     /* Colors */
     --color-lnd-primary: #6366f1;
     --color-lnd-primary-hover: #1d4ed8;
@@ -226,6 +226,17 @@
     border-radius: var(--border-lnd-radius-sm);
     font-size: var(--font-lnd-size-xs);
     font-weight: 500;
+    cursor: default;
+}
+
+.tag-promo {
+    background: #fef3c7;
+    color: #b45309;
+    padding: var(--spacing-lnd-xs) var(--spacing-lnd-sm);
+    border-radius: var(--border-lnd-radius-sm);
+    font-size: var(--font-lnd-size-xs);
+    font-weight: 600;
+    display: inline-block;
     cursor: default;
 }
 
