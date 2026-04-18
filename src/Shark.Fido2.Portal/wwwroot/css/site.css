@@ -481,6 +481,10 @@ pre.code {
     .toc-block ul li {
         margin-bottom: 4px;
     }
+
+    .card {
+        margin-bottom: 10px;
+    }
 }
 
 .email-rtl {
