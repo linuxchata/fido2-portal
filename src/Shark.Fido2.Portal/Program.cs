@@ -1,3 +1,4 @@
+using Shark.Fido2.ConvenienceMetadata.Core;
 using Shark.Fido2.Core;
 using Shark.Fido2.Core.Abstractions;
 using Shark.Fido2.InMemory;
@@ -53,6 +54,7 @@ builder.Services.AddSession(options =>
 
 builder.Services.AddFido2(builder.Configuration);
 builder.Services.AddFido2InMemoryStore();
+builder.Services.AddFido2ConvenienceMetadataService(builder.Configuration);
 builder.Services.AddTransient<IChallengeGenerator, CustomChallengeGenerator>();
 builder.Services.AddTransient<ICredentialService, CredentialService>();
 
