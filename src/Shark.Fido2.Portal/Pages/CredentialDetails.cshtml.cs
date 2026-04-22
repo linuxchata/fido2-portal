@@ -36,13 +36,13 @@ public class CredentialsDetailsModel : PageModel
     public required string UserDisplayName { get; set; }
 
     [BindProperty]
+    public uint SignCount { get; set; }
+
+    [BindProperty]
     public required string AaGuid { get; set; }
 
     [BindProperty]
     public string? Authenticator { get; set; }
-
-    [BindProperty]
-    public uint SignCount { get; set; }
 
     [BindProperty]
     public required string Algorithm { get; set; }
@@ -80,9 +80,9 @@ public class CredentialsDetailsModel : PageModel
         UserHandle = credential.UserHandle;
         UserName = credential.UserName;
         UserDisplayName = credential.UserDisplayName;
+        SignCount = credential.SignCount;
         AaGuid = $"{credential.AaGuid}";
         Authenticator = authenticatorName;
-        SignCount = credential.SignCount;
         Algorithm = PublicKeyAlgorithms.Get(credential.CredentialPublicKey.Algorithm);
         Transports = credential.Transports;
         CreatedAt = credential.CreatedAt.ToString(DateTimeFormat, CultureInfo.InvariantCulture);
