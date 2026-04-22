@@ -1,15 +1,16 @@
 <Project>
   <PropertyGroup>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <SharkFido2Version>1.4.0.124</SharkFido2Version>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageVersion Include="LigerShark.WebOptimizer.Core" Version="3.0.477" />
     <PackageVersion Include="Microsoft.ApplicationInsights.AspNetCore" Version="3.1.0" />
-    <PackageVersion Include="Shark.Fido2.Core" Version="1.4.0.124" />
-    <PackageVersion Include="Shark.Fido2.InMemory" Version="1.4.0.124" />
-    <PackageVersion Include="Shark.Fido2.Models" Version="1.4.0.124" />
-    <PackageVersion Include="Shark.Fido2.ConvenienceMetadata.Core" Version="1.4.0.124" />
+    <PackageVersion Include="Shark.Fido2.Core" Version="$(SharkFido2Version)" />
+    <PackageVersion Include="Shark.Fido2.InMemory" Version="$(SharkFido2Version)" />
+    <PackageVersion Include="Shark.Fido2.Models" Version="$(SharkFido2Version)" />
+    <PackageVersion Include="Shark.Fido2.ConvenienceMetadata.Core" Version="$(SharkFido2Version)" />
     <PackageVersion Include="StyleCop.Analyzers" Version="1.1.118" />
   </ItemGroup>
 </Project>
