@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - main
+    paths:
+      - .github/**
+      - src/**
+      - Directory.Build.props
+      - Directory.Packages.props
   workflow_dispatch:
 
 jobs:
