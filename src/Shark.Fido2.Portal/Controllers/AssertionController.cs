@@ -19,8 +19,6 @@ public class AssertionController(IAssertion assertion, ILogger<AssertionControll
 {
     private const string SessionName = "WebAuthn.RequestOptions";
 
-    private readonly IAssertion _assertion = assertion;
-
     /// <summary>
     /// Gets credential request options.
     /// </summary>
@@ -32,12 +30,7 @@ public class AssertionController(IAssertion assertion, ILogger<AssertionControll
         ServerPublicKeyCredentialGetOptionsRequest request,
         CancellationToken cancellationToken)
     {
-        if (request == null)
-        {
-            return BadRequest(ServerResponse.CreateFailed());
-        }
-
-        var requestOptions = await _assertion.BeginAuthentication(request.Map(), cancellationToken);
+        var requestOptions = await assertion.BeginAuthentication(request.Map(), cancellationToken);
 
         HttpContext.Session.SetString(SessionName, JsonSerializer.Serialize(requestOptions));
 
@@ -55,20 +48,15 @@ public class AssertionController(IAssertion assertion, ILogger<AssertionControll
         ServerPublicKeyCredentialAssertion request,
         CancellationToken cancellationToken)
     {
-        if (request == null || request.Response == null)
-        {
-            return BadRequest(ServerResponse.CreateFailed());
-        }
-
         var requestOptionsString = HttpContext.Session.GetString(SessionName);
         if (string.IsNullOrWhiteSpace(requestOptionsString))
         {
             return BadRequest(ServerResponse.CreateFailed());
         }
 
-        var requestOptions = JsonSerializer.Deserialize<PublicKeyCredentialRequestOptions>(requestOptionsString!);
+        var requestOptions = JsonSerializer.Deserialize<PublicKeyCredentialRequestOptions>(requestOptionsString);
 
-        var response = await _assertion.CompleteAuthentication(request.Map(), requestOptions!, cancellationToken);
+        var response = await assertion.CompleteAuthentication(request.Map(), requestOptions!, cancellationToken);
 
         HttpContext.Session.Remove(SessionName);
 
