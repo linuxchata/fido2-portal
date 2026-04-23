@@ -15,6 +15,7 @@
                 <li><a href="/Documentation#registering-dependencies" class="toc-link">Registering Dependencies</a></li>
                 <li><a href="/Documentation#server-side-api" class="toc-link">Server-side API</a></li>
                 <li><a href="/Documentation#client-side-integration" class="toc-link">Client-side Integration</a></li>
+                <li><a href="/Documentation#convenience-metadata-service" class="toc-link">Convenience Metadata Service</a></li>
                 <li><a href="/Documentation#persistent-data-stores" class="toc-link">Persistent Data Stores</a></li>
                 <li><a href="/Documentation#extension-points" class="toc-link">Extension Points</a></li>
             </ul>
@@ -504,6 +505,30 @@ window.authentication = authentication;
             </p>
             <h4 id="browsers-support">Browsers Support</h4>
             <p>Up-to-date details regarding the Web Authentication API support across modern browsers can be found on <a href="https://caniuse.com/webauthn" target="_blank" class="resource-link external">Can I use</a> page.</p>
+        </div>
+        <div class="main-description">
+            <h3 id="convenience-metadata-service">Convenience Metadata Service</h3>
+            <p>
+                The FIDO Convenience Metadata Service (CMDS) provides supplementary metadata for FIDO authenticators, such as human-readable names and icons, to enhance the user experience. Shark WebAuthn offers a dedicated service to fetch and cache this metadata for efficient lookup.
+            </p>
+            <p>
+                1. <b>Installing Package</b>
+            </p>
+            <p>Add the following NuGet package to your project:</p>
+            <pre class="code"><code class="language-bash">dotnet add package Shark.Fido2.ConvenienceMetadata.Core</code></pre>
+            <p>
+                2. <b>Registering Dependencies</b>
+            </p>
+            <p>
+                Register the CMDS service in your <code>Program.cs</code>:
+            </p>
+            <pre class="code"><code class="language-csharp">builder.Services.AddFido2ConvenienceMetadataService(builder.Configuration);</code></pre>
+            <p>
+                3. <b>Resolving the Service</b>
+            </p>
+            <p>
+                You can then resolve <code>IConvenienceMetadataCachedService</code> in your application to access authenticator metadata.
+            </p>
         </div>
         <div class="main-description">
             <h3 id="persistent-data-stores">Persistent Data Stores</h3>

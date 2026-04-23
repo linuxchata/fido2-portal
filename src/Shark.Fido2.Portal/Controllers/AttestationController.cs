@@ -19,8 +19,6 @@ public class AttestationController(IAttestation attestation, ILogger<Attestation
 {
     private const string SessionName = "WebAuthn.CreateOptions";
 
-    private readonly IAttestation _attestation = attestation;
-
     /// <summary>
     /// Gets credential create options.
     /// </summary>
@@ -32,12 +30,7 @@ public class AttestationController(IAttestation attestation, ILogger<Attestation
         ServerPublicKeyCredentialCreationOptionsRequest request,
         CancellationToken cancellationToken)
     {
-        if (request == null)
-        {
-            return BadRequest(ServerResponse.CreateFailed());
-        }
-
-        var createOptions = await _attestation.BeginRegistration(request.Map(), cancellationToken);
+        var createOptions = await attestation.BeginRegistration(request.Map(), cancellationToken);
 
         HttpContext.Session.SetString(SessionName, JsonSerializer.Serialize(createOptions));
 
@@ -55,20 +48,15 @@ public class AttestationController(IAttestation attestation, ILogger<Attestation
         ServerPublicKeyCredentialAttestation request,
         CancellationToken cancellationToken)
     {
-        if (request == null || request.Response == null)
-        {
-            return BadRequest(ServerResponse.CreateFailed());
-        }
-
         var createOptionsString = HttpContext.Session.GetString(SessionName);
         if (string.IsNullOrWhiteSpace(createOptionsString))
         {
             return BadRequest(ServerResponse.CreateFailed());
         }
 
-        var createOptions = JsonSerializer.Deserialize<PublicKeyCredentialCreationOptions>(createOptionsString!);
+        var createOptions = JsonSerializer.Deserialize<PublicKeyCredentialCreationOptions>(createOptionsString);
 
-        var response = await _attestation.CompleteRegistration(request.Map(), createOptions!, cancellationToken);
+        var response = await attestation.CompleteRegistration(request.Map(), createOptions!, cancellationToken);
 
         HttpContext.Session.Remove(SessionName);
 
