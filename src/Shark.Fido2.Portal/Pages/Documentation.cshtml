@@ -11,6 +11,7 @@
             <ul>
                 <li><a href="/Documentation#overview" class="toc-link">Overview</a></li>
                 <li><a href="/Documentation#installing-packages" class="toc-link">Installing Packages</a></li>
+                <li><a href="/Documentation#project-templates" class="toc-link">Project Templates</a></li>
                 <li><a href="/Documentation#server-side-configuration" class="toc-link">Server-side Configuration</a></li>
                 <li><a href="/Documentation#registering-dependencies" class="toc-link">Registering Dependencies</a></li>
                 <li><a href="/Documentation#server-side-api" class="toc-link">Server-side API</a></li>
@@ -55,6 +56,23 @@ dotnet add package Shark.Fido2.InMemory
             <p>
                 These packages provide the core WebAuthn functionality, data models, and an in-memory credential repository for development and testing. For production, consider using a persistent credential store instead of the in-memory implementation. See the <a href="/Documentation#persistent-data-stores" class="resource-link">Persistent Data Stores</a> section for details on integrating with Microsoft SQL Server and Amazon DynamoDB.
             </p>
+        </div>
+        <div class="main-description">
+            <h3 id="project-templates">Project Templates</h3>
+            <p>
+                To quickly get started with Shark WebAuthn, you can use the official Visual Studio project template. This template provides a pre-configured sample WebAuthn application that demonstrates both registration and authentication flows.
+            </p>
+            <p>
+                To install the project template, run the following command in your terminal:
+            </p>
+            <pre class="code"><code class="language-bash">dotnet new install Shark.Fido2.VisualStudio.Template</code></pre>
+            <p>
+                Once installed, the project template will appear in the Visual Studio "Create a new project" dialog. You can search for "Shark WebAuthn" or find it under the Web templates category. It provides a ready-to-build solution, saving you the time of setting up the ASP.NET Core project and client-side integration from scratch.
+            </p>
+            <p>
+                To uninstall the project template, you can run:
+            </p>
+            <pre class="code"><code class="language-bash">dotnet new uninstall Shark.Fido2.VisualStudio.Template</code></pre>
         </div>
         <div class="main-description">
             <h3 id="server-side-configuration">Server-side Configuration</h3>
