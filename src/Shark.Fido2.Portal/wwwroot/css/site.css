@@ -80,8 +80,15 @@ input:disabled {
 
 .banner {
     font-weight: 500;
-    color: var(--color-link);
+    color: var(--color-primary);
+    font-size: 1.25rem;
+    text-decoration: none;
 }
+
+    .banner:hover {
+        color: var(--color-primary);
+        text-decoration: none;
+    }
 
 .main-container {
     display: flex;
