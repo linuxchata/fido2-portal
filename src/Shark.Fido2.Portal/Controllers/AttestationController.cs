@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Shark.Fido2.Core.Abstractions;
 using Shark.Fido2.Domain.Options;
@@ -12,10 +12,10 @@ namespace Shark.Fido2.Portal.Controllers;
 /// <summary>
 /// Attestation (registration).
 /// </summary>
-[Route("[controller]")]
 [ApiController]
+[Route("[controller]")]
 [TypeFilter(typeof(RestApiExceptionFilter))]
-public class AttestationController(IAttestation attestation, ILogger<AttestationController> logger) : ControllerBase
+public sealed class AttestationController(IAttestation attestation, ILogger<AttestationController> logger) : ControllerBase
 {
     private const string SessionName = "WebAuthn.CreateOptions";
 
@@ -25,9 +25,13 @@ public class AttestationController(IAttestation attestation, ILogger<Attestation
     /// <param name="request">The request.</param>
     /// <param name="cancellationToken">A cancellation token.</param>
     /// <returns>The HTTP response.</returns>
+    /// <response code="200">The credential creation options.</response>
+    /// <response code="400">If the request is invalid.</response>
     [HttpPost("options")]
-    public async Task<IActionResult> Options(
-        ServerPublicKeyCredentialCreationOptionsRequest request,
+    [ProducesResponseType(typeof(ServerPublicKeyCredentialCreationOptionsResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> OptionsAsync(
+        [FromBody] ServerPublicKeyCredentialCreationOptionsRequest request,
         CancellationToken cancellationToken)
     {
         var createOptions = await attestation.BeginRegistration(request.Map(), cancellationToken);
@@ -43,9 +47,13 @@ public class AttestationController(IAttestation attestation, ILogger<Attestation
     /// <param name="request">The request.</param>
     /// <param name="cancellationToken">A cancellation token.</param>
     /// <returns>The HTTP response.</returns>
+    /// <response code="200">The registration result.</response>
+    /// <response code="400">If the session is missing or registration fails.</response>
     [HttpPost("result")]
-    public async Task<IActionResult> Result(
-        ServerPublicKeyCredentialAttestation request,
+    [ProducesResponseType(typeof(ServerResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ServerResponse), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> ResultAsync(
+        [FromBody] ServerPublicKeyCredentialAttestation request,
         CancellationToken cancellationToken)
     {
         var createOptionsString = HttpContext.Session.GetString(SessionName);
