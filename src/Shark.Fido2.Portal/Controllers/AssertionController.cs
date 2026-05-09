@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Shark.Fido2.Core.Abstractions;
 using Shark.Fido2.Domain.Options;
@@ -12,10 +12,10 @@ namespace Shark.Fido2.Portal.Controllers;
 /// <summary>
 /// Assertion (authentication).
 /// </summary>
-[Route("[controller]")]
 [ApiController]
+[Route("[controller]")]
 [TypeFilter(typeof(RestApiExceptionFilter))]
-public class AssertionController(IAssertion assertion, ILogger<AssertionController> logger) : ControllerBase
+public sealed class AssertionController(IAssertion assertion, ILogger<AssertionController> logger) : ControllerBase
 {
     private const string SessionName = "WebAuthn.RequestOptions";
 
@@ -25,9 +25,13 @@ public class AssertionController(IAssertion assertion, ILogger<AssertionControll
     /// <param name="request">The request.</param>
     /// <param name="cancellationToken">A cancellation token.</param>
     /// <returns>The HTTP response.</returns>
+    /// <response code="200">The credential request options.</response>
+    /// <response code="400">If the request is invalid.</response>
     [HttpPost("options")]
-    public async Task<IActionResult> Options(
-        ServerPublicKeyCredentialGetOptionsRequest request,
+    [ProducesResponseType(typeof(ServerPublicKeyCredentialGetOptionsResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> OptionsAsync(
+        [FromBody] ServerPublicKeyCredentialGetOptionsRequest request,
         CancellationToken cancellationToken)
     {
         var requestOptions = await assertion.BeginAuthentication(request.Map(), cancellationToken);
@@ -43,9 +47,13 @@ public class AssertionController(IAssertion assertion, ILogger<AssertionControll
     /// <param name="request">The request.</param>
     /// <param name="cancellationToken">A cancellation token.</param>
     /// <returns>The HTTP response.</returns>
+    /// <response code="200">The validation result.</response>
+    /// <response code="400">If the session is missing or registration fails.</response>
     [HttpPost("result")]
-    public async Task<IActionResult> Result(
-        ServerPublicKeyCredentialAssertion request,
+    [ProducesResponseType(typeof(ServerResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ServerResponse), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> ResultAsync(
+        [FromBody] ServerPublicKeyCredentialAssertion request,
         CancellationToken cancellationToken)
     {
         var requestOptionsString = HttpContext.Session.GetString(SessionName);

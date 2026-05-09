@@ -1,3 +1,8 @@
+---
+name: update-fido2-packages
+description: Automate the process of updating the SharkFido2Version in Directory.Packages.props by checking NuGet for the latest version.
+---
+
 # Skill: Update SharkFido2Version
 
 Automate the process of updating the `SharkFido2Version` in `Directory.Packages.props` by checking NuGet for the latest version.
