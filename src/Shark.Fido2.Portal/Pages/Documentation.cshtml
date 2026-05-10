@@ -99,7 +99,8 @@ dotnet add package Shark.Fido2.InMemory
       "MaximumTokenSizeInBytes": 10485760
     },
     "ConvenienceMetadataServiceConfiguration": {
-      "ConvenienceMetadataBlobLocation": "https://c-mds.fidoalliance.org/"
+      "ConvenienceMetadataBlobLocation": "https://c-mds.fidoalliance.org/",
+      "CacheExpiration": "1.00:00:00"
     }
   }
 }
@@ -147,7 +148,7 @@ dotnet add package Shark.Fido2.InMemory
                 </thead>
                 <tbody>
                 <tr><td><code>MetadataBlobLocation</code></td><td><code>https://mds3.fidoalliance.org/</code></td><td>Location of the centralized and trusted source of information about FIDO authenticators (Metadata Service BLOB).</td></tr>
-                    <tr><td><code>RootCertificateLocationUrl</code></td><td><code>https://secure.globalsign.com/cacert/root-r3.crt</code></td><td>Location of GlobalSign Root R3 certificate for Metadata Service BLOB.</td></tr>
+                <tr><td><code>RootCertificateLocationUrl</code></td><td><code>https://secure.globalsign.com/cacert/root-r3.crt</code></td><td>Location of GlobalSign Root R3 certificate for Metadata Service BLOB.</td></tr>
                 <tr><td><code>MaximumTokenSizeInBytes</code></td><td><code>10485760</code></td><td>Maximum token size in bytes that will be processed. This configuration is related to the Metadata Service BLOB size.</td></tr>
                 </tbody>
             </table>
@@ -162,6 +163,7 @@ dotnet add package Shark.Fido2.InMemory
                 </thead>
                 <tbody>
                     <tr><td><code>ConvenienceMetadataBlobLocation</code></td><td><code>https://c-mds.fidoalliance.org/</code></td><td>Location of the convenience centric information about FIDO authenticators (Convenience Metadata Service BLOB).</td></tr>
+                    <tr><td><code>CacheExpiration</code></td><td><code>1.00:00:00</code></td><td>The duration for which the convenience metadata should be cached.</td></tr>
                 </tbody>
             </table>
             <h4 id="configuration-usage">Configuration Usage</h4>
@@ -220,8 +222,8 @@ await app.RunAsync();
             <p>
                 1. <b>Create the <code>AttestationController</code> and inject an instance of the <code>IAttestation</code> interface into its constructor</b>
             </p>
-            <pre class="code"><code class="language-csharp">[Route("[controller]")]
-[ApiController]
+            <pre class="code"><code class="language-csharp">[ApiController]
+[Route("[controller]")]
 public class AttestationController : ControllerBase
 {
     private readonly IAttestation _attestation;
@@ -262,8 +264,8 @@ public async Task&lt;IActionResult&gt; Result(ServerPublicKeyCredentialAttestati
             <p>
                 1. <b>Create the <code>AssertionController</code> and inject an instance of the <code>IAssertion</code> interface into its constructor</b>
             </p>
-            <pre class="code"><code class="language-csharp">[Route("[controller]")]
-[ApiController]
+            <pre class="code"><code class="language-csharp">[ApiController]
+[Route("[controller]")]
 public class AssertionController : ControllerBase
 {
     private readonly IAssertion _assertion;
