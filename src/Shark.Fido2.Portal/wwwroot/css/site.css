@@ -493,9 +493,3 @@ pre.code {
         margin-bottom: 10px;
     }
 }
-
-.email-rtl {
-    unicode-bidi: bidi-override;
-    direction: rtl;
-    display: inline-block;
-}
