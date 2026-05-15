@@ -50,6 +50,7 @@
     --spacing-lnd-3xl: 3rem;
     --spacing-lnd-4xl: 4rem;
     --spacing-lnd-5xl: 5rem;
+    --spacing-lnd-6xl: 6rem;
     --spacing-lnd-8xl: 8rem;
     /* Border radius */
     --border-lnd-radius-sm: 0.125rem;
@@ -79,7 +80,6 @@
 
 .button {
     padding: var(--spacing-lnd-sm) var(--spacing-lnd-base);
-    border-radius: var(--border-lnd-radius);
     text-decoration: none;
     font-weight: 500;
     transition: var(--transition-lnd-fast);
@@ -117,13 +117,13 @@
 
 /* Hero Section */
 .hero {
-    padding: var(--spacing-lnd-5xl) 0 var(--spacing-lnd-8xl);
+    padding: var(--spacing-lnd-8xl) 0 var(--spacing-lnd-8xl);
     text-align: center;
 }
 
     .hero h1 {
         font-size: var(--font-lnd-size-4xl);
-        font-weight: 700;
+        font-weight: 500;
         color: var(--color-lnd-gray-900);
         margin-bottom: var(--spacing-lnd-2xl);
         line-height: 1.15;
@@ -189,9 +189,7 @@
         margin-bottom: var(--spacing-lnd-base);
         padding: var(--spacing-lnd-lg);
         background: var(--color-lnd-white);
-        border-radius: var(--border-lnd-radius-md);
         border: 1px solid var(--color-lnd-gray-200);
-        box-shadow: var(--shadow-lnd-sm);
         transition: var(--transition-lnd-fast);
     }
 
@@ -200,8 +198,8 @@
     }
 
 .check-icon {
-    width: var(--font-lnd-size-2xl);
-    height: var(--font-lnd-size-2xl);
+    width: var(--font-lnd-size-base);
+    height: var(--font-lnd-size-base);
     color: var(--color-lnd-primary);
     margin-right: var(--spacing-lnd-md);
     margin-top: var(--spacing-lnd-xs);
@@ -230,7 +228,6 @@
     background: var(--color-lnd-primary-light);
     color: var(--color-lnd-primary-dark);
     padding: var(--spacing-lnd-xs) var(--spacing-lnd-sm);
-    border-radius: var(--border-lnd-radius-sm);
     font-size: var(--font-lnd-size-xs);
     font-weight: 500;
     cursor: default;
@@ -240,7 +237,6 @@
     background: #fef3c7;
     color: #b45309;
     padding: var(--spacing-lnd-xs) var(--spacing-lnd-sm);
-    border-radius: var(--border-lnd-radius-sm);
     font-size: var(--font-lnd-size-xs);
     font-weight: 600;
     display: inline-block;
@@ -268,7 +264,6 @@
 
 .provider-card {
     border: 1px solid var(--color-lnd-border);
-    border-radius: var(--border-lnd-radius-md);
     padding: var(--spacing-lnd-xl);
     text-align: center;
     transition: var(--transition-lnd-fast);
@@ -296,6 +291,7 @@
 .provider-card p {
     color: var(--color-lnd-text-muted);
     font-size: var(--font-lnd-size-base);
+    margin-bottom: 0;
 }
 
 /* Open Source Section */
@@ -315,8 +311,6 @@
 /* Getting Started Section */
 .getting-started {
     padding: var(--spacing-lnd-5xl) 0;
-    background: var(--color-lnd-lightest);
-    background: linear-gradient(to right, #ffffff 0%, var(--color-lnd-lightest) 20%, var(--color-lnd-lightest) 80%, #ffffff 100%);
 }
 
     .getting-started p {
@@ -332,9 +326,15 @@
 
 /* CTA (Call-to-Action) Section */
 .cta {
-    padding: var(--spacing-lnd-5xl) 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background: var(--color-lnd-primary);
     text-align: center;
+    padding: var(--spacing-lnd-5xl) 0;
+    margin: 0;
+    width: 100%;
 }
 
     .cta h2 {
@@ -380,7 +380,7 @@
 /* Responsive */
 @media (max-width: 768px) {
     .hero {
-        padding: var(--spacing-lnd-3xl) 0 var(--spacing-lnd-4xl);
+        padding: var(--spacing-lnd-6xl) 0 var(--spacing-lnd-6xl);
     }
 
     .hero h1 {
@@ -403,9 +403,8 @@
     .supported-features,
     .getting-started,
     .cta {
-        /* Cancel padding from parrent container */
-        margin-left: -0.75rem;
-        margin-right: -0.75rem;
+        margin-left: 0;
+        margin-right: 0;
     }
 
     .reduced-padding {
