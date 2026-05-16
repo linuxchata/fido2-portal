@@ -19,8 +19,10 @@ Disallow: /CredentialDetails
 Allow: /css/
 Allow: /js/
 Allow: /lib/
+Allow: /apple-touch-icon.png
 Allow: /favicon.ico
-Allow: /favicon.svg
+Allow: /favicon-16x16.png
+Allow: /favicon-32x32.png
 Allow: /og-image.png
 
 # Disallow configuration and sensitive files
