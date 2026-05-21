@@ -30,6 +30,7 @@
     --font-size-sm: 1rem;
     --font-size-xs: 0.9rem;
     --transition: all 0.3s ease;
+    --bs-gutter-x: 1.5rem;
 }
 
 html {
@@ -94,6 +95,8 @@ input:disabled {
     min-height: 350px;
     max-width: 1000px;
     margin: 30px auto;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
 }
 
 .inner-container-wrapper {
