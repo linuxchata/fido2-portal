@@ -50,6 +50,7 @@
     --spacing-lnd-3xl: 3rem;
     --spacing-lnd-4xl: 4rem;
     --spacing-lnd-5xl: 5rem;
+    --spacing-lnd-7xl: 7rem;
     --spacing-lnd-8xl: 8rem;
     /* Shadows */
     --shadow-lnd-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
@@ -374,7 +375,7 @@
 /* Responsive */
 @media (max-width: 768px) {
     .hero {
-        padding: var(--spacing-lnd-8xl) 0 var(--spacing-lnd-8xl);
+        padding: var(--spacing-lnd-7xl) 0 var(--spacing-lnd-8xl);
     }
 
     .hero h1 {
