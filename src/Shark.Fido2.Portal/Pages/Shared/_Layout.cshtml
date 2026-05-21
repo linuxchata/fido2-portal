@@ -1,30 +1,40 @@
 @inject IHttpContextAccessor HttpContextAccessor
 
+@{
+    var title = ViewData["Title"] as string ?? "Shark WebAuthn .NET library";
+    var description = ViewData["Description"] as string ?? "Shark WebAuthn library for .NET: complete server-side WebAuthn protocol implementation. Secure, passwordless login and MFA for modern web applications.";
+    var ogTitle = ViewData["OgTitle"] as string ?? title;
+    var ogDescription = ViewData["OgDescription"] as string ?? "Shark WebAuthn library for .NET delivers a complete server-side WebAuthn implementation, enabling secure, passwordless login and MFA for modern web applications.";
+    var twitterTitle = ViewData["TwitterTitle"] as string ?? title;
+    var twitterDescription = ViewData["TwitterDescription"] as string ?? ogDescription;
+    var canonicalUrl = ViewData["CanonicalUrl"] as string ?? $"{HttpContextAccessor!.HttpContext!.Request.Scheme}://{HttpContextAccessor.HttpContext.Request.Host}{HttpContextAccessor.HttpContext.Request.Path}{HttpContextAccessor.HttpContext.Request.QueryString}";
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Shark WebAuthn library for .NET: complete server-side WebAuthn protocol implementation. Secure, passwordless login and MFA for modern web applications.">
-    <title>Shark WebAuthn .NET library</title>
-    <meta property="og:title" content="Shark WebAuthn .NET library" />
-    <meta property="og:description" content="Shark WebAuthn library for .NET delivers a complete server-side WebAuthn implementation, enabling secure, passwordless login and MFA for modern web applications." />
+    <meta name="description" content="@description">
+    <title>@title</title>
+    <meta property="og:title" content="@ogTitle" />
+    <meta property="og:description" content="@ogDescription" />
     <meta property="og:image" content="https://shark-fido2.com/og-image.png" />
     <meta property="og:image:alt" content="Shark WebAuthn library for .NET – Secure passwordless authentication library" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:url" content="https://shark-fido2.com/" />
+    <meta property="og:url" content="@canonicalUrl" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Shark WebAuthn" />
     <meta property="og:locale" content="en_US" />
     <meta name="theme-color" content="#6366f1" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Shark WebAuthn .NET library" />
-    <meta name="twitter:description" content="Shark WebAuthn library for .NET delivers a complete server-side WebAuthn implementation, enabling secure, passwordless login and MFA for modern web applications." />
+    <meta name="twitter:title" content="@twitterTitle" />
+    <meta name="twitter:description" content="@twitterDescription" />
     <meta name="twitter:image" content="https://shark-fido2.com/og-image.png" />
     <meta name="twitter:image:alt" content="Shark WebAuthn library for .NET – Secure passwordless authentication library" />
     <meta name="twitter:site" content="@@SharkWebAuthn" />
-    <link rel="canonical" href="@($"{HttpContextAccessor!.HttpContext!.Request.Scheme}://{HttpContextAccessor.HttpContext.Request.Host}{HttpContextAccessor.HttpContext.Request.Path}{HttpContextAccessor.HttpContext.Request.QueryString}")" />
+    <link rel="canonical" href="@canonicalUrl" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">

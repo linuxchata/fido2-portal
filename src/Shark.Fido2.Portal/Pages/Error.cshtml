@@ -1,10 +1,14 @@
-﻿@page
+@page
 @model ErrorModel
+@{
+    ViewData["Title"] = "Error – Shark WebAuthn .NET library";
+    ViewData["Description"] = "An error occurred while processing your request.";
+}
 
 <div class="main-container">
     <div class="main-section">
         <div class="main-header">
-            <h2 class="text-danger">Error</h2>
+            <h1 class="text-danger">Error</h1>
         </div>
         @if (Model.ShowRequestId)
         {

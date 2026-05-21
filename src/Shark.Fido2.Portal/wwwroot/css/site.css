@@ -139,6 +139,7 @@ input:disabled {
     margin-bottom: 20px;
 }
 
+    .main-header h1,
     .main-header h2 {
         font-size: var(--font-size-xxxl);
         font-weight: 600;
