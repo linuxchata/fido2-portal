@@ -258,6 +258,7 @@
 }
 
 .provider-card {
+    background: var(--color-lnd-light);
     border: 1px solid var(--color-lnd-border);
     padding: var(--spacing-lnd-xl);
     text-align: center;
@@ -265,6 +266,7 @@
 }
 
     .provider-card:hover {
+        background: var(--color-lnd-white);
         box-shadow: var(--shadow-lnd-md);
         transform: translateY(-2px);
     }
