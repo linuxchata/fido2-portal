@@ -422,7 +422,7 @@ pre.code {
 }
 
 .notyf {
-    word-break: break-word;
+    overflow-wrap: anywhere;
 }
 
 .notyf__icon {
