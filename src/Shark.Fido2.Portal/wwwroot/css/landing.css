@@ -57,6 +57,8 @@
     --shadow-lnd-md: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
     /* Transitions */
     --transition-lnd-fast: all 0.2s;
+    /* Radiuses */
+    --border-radius-base: 4px;
     /* Layout */
     --container-lnd-max-width: 1200px;
     --container-lnd-max-width-text: 48rem;
@@ -82,6 +84,7 @@
     align-items: center;
     gap: var(--spacing-lnd-sm);
     border: none;
+    border-radius: var(--border-radius-base);
     cursor: pointer;
 }
 
@@ -131,7 +134,7 @@
 
     .hero p {
         font-size: var(--font-lnd-size-lg);
-        color: var(--color-lnd-text-muted);
+        color: var(--color-lnd-text-dark);
         max-width: var(--container-lnd-max-width-text);
         margin: 0 auto var(--spacing-lnd-2xl);
     }
@@ -185,6 +188,7 @@
         padding: var(--spacing-lnd-lg);
         background: var(--color-lnd-white);
         border: 1px solid var(--color-lnd-gray-200);
+        border-radius: var(--border-radius-base);
         transition: var(--transition-lnd-fast);
     }
 
@@ -260,6 +264,7 @@
 .provider-card {
     background: var(--color-lnd-light);
     border: 1px solid var(--color-lnd-border);
+    border-radius: var(--border-radius-base);
     padding: var(--spacing-lnd-xl);
     text-align: center;
     transition: var(--transition-lnd-fast);
@@ -299,7 +304,7 @@
 
     .open-source p {
         font-size: var(--font-lnd-size-lg);
-        color: var(--color-lnd-text-muted);
+        color: var(--color-lnd-text-dark);
         max-width: var(--container-lnd-max-width-text);
         margin: 0 auto var(--spacing-lnd-2xl);
         line-height: 1.55;
