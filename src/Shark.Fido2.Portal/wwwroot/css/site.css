@@ -30,6 +30,7 @@
     --font-size-sm: 1rem;
     --font-size-xs: 0.9rem;
     --transition: all 0.3s ease;
+    --border-radius-base: 4px;
     --bs-gutter-x: 1.5rem;
 }
 
@@ -130,11 +131,13 @@ input:disabled {
 .signup-section {
     background-color: var(--color-light);
     border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-base);
 }
 
 .signin-section {
     background-color: var(--color-light);
     border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-base);
 }
 
 .main-header {
@@ -264,7 +267,7 @@ input:disabled {
     padding: 12px;
     font-size: 16px;
     border: 1px solid var(--color-border);
-    border-radius: 0;
+    border-radius: var(--border-radius-base);
     transition: var(--transition);
 }
 
@@ -281,6 +284,7 @@ input:disabled {
     font-weight: 500;
     text-align: center;
     border: none;
+    border-radius: var(--border-radius-base);
     cursor: pointer;
     transition: var(--transition);
 }
@@ -288,7 +292,6 @@ input:disabled {
 .btn-primary {
     background-color: var(--color-primary);
     color: var(--color-light);
-    border-radius: 0;
 }
 
     .btn-primary:hover,
@@ -305,7 +308,6 @@ input:disabled {
 .btn-secondary {
     background-color: var(--color-secondary);
     color: var(--color-secondary-text);
-    border-radius: 0;
 }
 
     .btn-secondary:hover,
