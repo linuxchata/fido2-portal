@@ -205,7 +205,7 @@ input:disabled {
 .card {
     background-color: var(--color-light);
     border: 1px solid var(--color-border);
-    border-radius: 0;
+    border-radius: var(--border-radius-base);
 }
 
 .card-body {
