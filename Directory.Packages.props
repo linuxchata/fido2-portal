@@ -2,7 +2,7 @@
   <PropertyGroup>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
     <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
-    <SharkFido2Version>1.5.1.138</SharkFido2Version>
+    <SharkFido2Version>1.5.2.139</SharkFido2Version>
   </PropertyGroup>
 
   <ItemGroup>
